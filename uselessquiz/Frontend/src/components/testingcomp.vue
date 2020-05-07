@@ -3,6 +3,7 @@
     <h1>{{msg}}</h1>
     <p>
         Detta är enbart för test!
+        hej hej
     </p>
     </div>
 </template>
