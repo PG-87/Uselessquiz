@@ -19,5 +19,11 @@ app.listen(HTTP_PORT, () => {
 });
 
 app.get("/api/questions", (req, res, next) => {
-    res.send("HEJ")
+    res.json({
+        "results": [
+            {
+                "question": "question",
+                "type": "multiple"
+            }
+        ]})
 })
