@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <img alt="vue logo" src="./assets/logo.png">
-    <testingcomp msg="DET FUNKAR JU!!!!"/>
-    <button>HEJ</button>
+    <testingcomp/>
     <HelloWorld msg="Tjenare och välkommen"/>
 
   </div>
@@ -10,14 +9,15 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import testingcomp from './components/testingcomp.vue'
 
 
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    testingcomp
   }
 }
 
