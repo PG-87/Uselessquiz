@@ -10,7 +10,6 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import Testingcomp from "./components/testingcomp";
 
 
 
@@ -18,7 +17,6 @@ import Testingcomp from "./components/testingcomp";
 export default {
   name: 'App',
   components: {
-    Testingcomp,
     HelloWorld
   }
 }
