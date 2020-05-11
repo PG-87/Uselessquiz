@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "question": "frågan",
+      "question": "frsågan",
       "correct_answer": "svar",
       "incorrect_answer": [
         "felsvar1",
