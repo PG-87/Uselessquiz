@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
+    <img class="logo" alt="Vue logo" src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    <p>Tugbaaaaaaaaa</p>
-
   </div>
 </template>
 
@@ -31,4 +30,9 @@ li {
 a {
   color: #42b983;
 }
+.logo{
+  width:100px;
+  height:100px;
+}
+
 </style>

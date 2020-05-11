@@ -1,21 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to tugbasbranch"/>
+    <Header msg="Welcome to Useless-Quiz"/>
+    <Scoreboard></Scoreboard>
+    <Questions></Questions>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-
+import Header from './components/Header.vue'
+import Questions from './components/Questions.vue'
+import Scoreboard from "./components/Scoreboard";
 
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Questions,
+    Scoreboard
   }
+
 }
 </script>
 
