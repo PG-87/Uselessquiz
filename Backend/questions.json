@@ -1,0 +1,25 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "frågan",
+      "correct_answer": "svar",
+      "incorrect_answer": [
+        "felsvar1",
+        "felsvar2",
+        "felsvar3"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "frsådfgsdfgdgan",
+      "correct_answer": "svar",
+      "incorrect_answer": [
+        "felsvar1",
+        "felsvar2",
+        "felsvar3"
+      ]
+    }
+  ]
+
+}
