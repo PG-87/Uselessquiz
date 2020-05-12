@@ -3,20 +3,23 @@
     <img class = logo alt="vue logo" src="./assets/logo.png">
     <div id="nav">
       <router-link to="/">Home</router-link>
-      <router-link to="/login">Login</router-link>
-      <router-link to="/login">FAQ</router-link>
-      <router-link to="/login">Kontakta Oss</router-link>
+      <router-link to="/login">Logga in</router-link>
+      <router-link to="/faq">FAQ</router-link>
+      <router-link to="/kontaktaoss">Kontakta oss</router-link>
+      <hr>
       <router-view></router-view>
+
     </div>
-    <hr>
-    <testingcomp/>
+
+
 
 
   </div>
 </template>
 
 <script>
-import testingcomp from './components/testingcomp.vue'
+
+
 
 
 
@@ -24,7 +27,7 @@ export default {
   name: 'App',
   components: {
 
-    testingcomp
+
   }
 }
 
