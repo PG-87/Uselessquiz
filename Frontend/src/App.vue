@@ -8,7 +8,7 @@
       <router-link to="/kontaktaoss">Kontakta oss</router-link>
       <hr>
       <router-view></router-view>
-
+   </div>
     <hr>
     <Quiz question="Placeholder question"></Quiz>
     <Scoreboard></Scoreboard>
