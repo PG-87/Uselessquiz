@@ -74,6 +74,7 @@
       "id": 8,
       "question": "En standard bassäng rymmer ..... Liter vatten.",
       "correct_answer": "430 000",
+
       "incorrect_answer": [
         "30 000",
         "50 000",
@@ -82,6 +83,7 @@
     },
     {
       "id": 9,
+
       "question": "Den hårdaste/snabbaste tennisserven i historien är uppmätt till .... km/h",
       "correct_answer": "246.2",
       "incorrect_answer": [
@@ -94,6 +96,7 @@
       "id": 10,
       "question": "Sonys första produkt var en ......",
       "correct_answer": "riskokare",
+
       "incorrect_answer": [
         "telefon",
         "TV",
@@ -114,6 +117,7 @@
       "id": 12,
       "question": "År 1665 fanns det .... läkare i Sverige.",
       "correct_answer": "23",
+
       "incorrect_answer": [
         "7",
         "510",
@@ -132,6 +136,7 @@
     },
     {
       "id": 14,
+
       "question": "Den ryska Oktober-revolutionen firas i .....",
       "correct_answer": "november",
       "incorrect_answer": [
