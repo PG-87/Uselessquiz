@@ -9,22 +9,22 @@
       <router-view></router-view>
     </div>
     <hr>
-    <testingcomp/>
+    <Quiz question="Placeholder question"></Quiz>
+    <Scoreboard></Scoreboard>
 
 
   </div>
 </template>
 
 <script>
-import testingcomp from './components/testingcomp.vue'
-
-
+import Quiz from "./components/Quiz";
+import Scoreboard from "./components/Scoreboard";
 
 export default {
   name: 'App',
   components: {
-
-    testingcomp
+    Quiz,
+    Scoreboard,
   }
 }
 
