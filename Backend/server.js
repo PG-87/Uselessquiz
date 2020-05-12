@@ -21,17 +21,17 @@ app.listen(HTTP_PORT, () => {
 app.get("/api/questions", (req, res, next) => {
     let rnd=Math.floor(Math.random() * quizdb.questions.length);
     res.json(quizdb.questions[rnd])
-})
-app.get("/api/questions/:id", (req, res, next) => {
-   console.log(quizdb.questions[req.params.id-1].correct_answer)
-    res.json(quizdb.questions[req.params.id-1])
 
-})
+});
+app.get("/api/questions/:id", (req, res, next) => {
+   console.log(quizdb.questions[req.params.id-1].correct_answer);
+    res.json(quizdb.questions[req.params.id-1])
+});
 
 app.get("/api/questions/range/:number", (req, res, next) => {
     let numberArry = [];
     while (numberArry.length < req.params.number) {
-        let rndnumber = Math.floor(Math.random() * quizdb.questions.length)
+        let rndnumber = Math.floor(Math.random() * quizdb.questions.length);
         if (!numberArry.includes(quizdb.questions[rndnumber])) {
         numberArry.push(quizdb.questions[rndnumber])
         }
