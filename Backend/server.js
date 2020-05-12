@@ -31,7 +31,7 @@ app.get("/api/questions/:id", (req, res, next) => {
 app.get("/api/questions/range/:number", (req, res, next) => {
     let numberArry = [];
     while (numberArry.length < req.params.number) {
-        let rndnumber = Math.floor(Math.random() * quizdb.questions.length)
+        let rndnumber = Math.floor(Math.random() * quizdb.questions.length);
         if (!numberArry.includes(quizdb.questions[rndnumber])) {
         numberArry.push(quizdb.questions[rndnumber])
         }
