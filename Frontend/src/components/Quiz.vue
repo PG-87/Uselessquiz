@@ -7,6 +7,7 @@
             </button>
         </section>
         <button id="next" style="display: inline" onclick="toggleShow()">Next question</button>
+        <button @click="getQuestion()">Ny fråga</button>
     </div>
 </template>
 
@@ -28,30 +29,26 @@
                 ]
             }
         },
-        mounted() {
-            fetch('http://127.0.0.1:3000/api/questions/')
-                .then((response) => {
-                    return response.json()
-                })
-                .then((data) => {
-                    console.log(data.results);
-                    this.question = data.question;
-                    let answerArray = [data.correct_answer, data.incorrect_answer[0], data.incorrect_answer[1], data.incorrect_answer[2]];
+        methods: {
+            getQuestion: function() {
+                fetch('http://127.0.0.1:3000/api/questions')
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then((data) => {
+                        console.log(data.results);
+                        this.question = data.question;
+                        let answerArray = [data.correct_answer, data.incorrect_answer[0], data.incorrect_answer[1], data.incorrect_answer[2]];
                         answerArray.sort(() => Math.random() - 0.5);
                         this.answers.forEach(function (entry) {
                             entry.answer = answerArray.pop();
                             if (entry.answer === data.correct_answer){
                                 entry.correct = true;
                             }
-                    });
-                    console.log(this.answers)
-                    /*let rndnumber = Math.floor(Math.random() * 4);
-                    this.answers[0].answer = data.correct_answer;
-                    this.answers[0].correct = true;
-                    for (let i = 1; i <= 4; i++)
-                        this.answers[i].answer = data.incorrect_answer[i - 1]; */
-                })
-
+                        });
+                        console.log(this.answers)
+                    })
+            }
         }
     }
 </script>
