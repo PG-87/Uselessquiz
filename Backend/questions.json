@@ -62,42 +62,45 @@
     },
     {
       "id": 7,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "....% av alla bilolyckor inträffar för att föraren somnar framför ratten.",
+      "correct_answer": "21",
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "7",
+        "15",
+        "42"
       ]
     },
     {
       "id": 8,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "En standard bassäng rymmer ..... Liter vatten.",
+      "correct_answer": "430 000",
+
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "30 000",
+        "50 000",
+        "380 000"
       ]
     },
     {
       "id": 9,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+
+      "question": "Den hårdaste/snabbaste tennisserven i historien är uppmätt till .... km/h",
+      "correct_answer": "246.2",
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "330.5",
+        "108.9",
+        "221.7"
       ]
     },
     {
       "id": 10,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "Sonys första produkt var en ......",
+      "correct_answer": "riskokare",
+
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "telefon",
+        "TV",
+        "hårtork"
       ]
     },
     {
@@ -112,42 +115,294 @@
     },
     {
       "id": 12,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "År 1665 fanns det .... läkare i Sverige.",
+      "correct_answer": "23",
+
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "7",
+        "510",
+        "103"
       ]
     },
     {
       "id": 13,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "...... är Sveriges vanligaste efternamn. ",
+      "correct_answer": "Johansson",
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "Andersson",
+        "Karlsson",
+        "Nilsson"
       ]
     },
     {
       "id": 14,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+
+      "question": "Den ryska Oktober-revolutionen firas i .....",
+      "correct_answer": "november",
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "oktober",
+        "december",
+        "juni"
       ]
     },
     {
       "id": 15,
-      "question": "Under ett år sväljer du ca .... insekter medan du sover",
-      "correct_answer": "15",
+      "question": "I afrika använder många ....... till bygge av hus/hyddor.",
+      "correct_answer": "elefantbajs",
       "incorrect_answer": [
-        "3",
-        "5",
-        "30"
+        "tegel",
+        "isoleringsmaterial",
+        "lera"
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Personen som gör rösten till Bart Simpson är ......",
+      "correct_answer": "kvinnlig",
+      "incorrect_answer": [
+        "manlig",
+        "intersex/trans-gendered",
+        "gender-neutral"
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Sannolikheten att man blir dödad genom att ramla ur sängen är .......",
+      "correct_answer": "1 / 2 000 000",
+      "incorrect_answer": [
+        "1 / 100 000 ",
+        "1/ 500 000",
+        "1 / 1000"
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Det finns ........... st bultar i Ölandsbron.",
+      "correct_answer": "7 428 954",
+      "incorrect_answer": [
+        "1 276 549",
+        "567 329",
+        "134 594"
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Alla klockor i filmen Pulp Fiction är .....",
+      "correct_answer": "4:20",
+      "incorrect_answer": [
+        "5:50",
+        "18:23",
+        "21:06"
+      ]
+    },
+    {
+      "id": 20,
+      "question": "....... var det första landet The Beatles besökte.",
+      "correct_answer": "Sverige",
+      "incorrect_answer": [
+        "Tyskland",
+        "Rumänien",
+        "Spanien"
+      ]
+    },
+    {
+      "id": 21,
+      "question": "En humla slår .... vingslag i sekunden.",
+      "correct_answer": "179",
+      "incorrect_answer": [
+        "101",
+        "503",
+        "79"
+      ]
+    },
+    {
+      "id": 22,
+      "question": "Det krävs .... elitsimmare att dra kryssningsfartyget Silja Opera.",
+      "correct_answer": "3300",
+      "incorrect_answer": [
+        "10 978",
+        "1056",
+        "4230"
+      ]
+    },
+    {
+      "id": 23,
+      "question": "En ..... kan tvätta sina öron med sin tunga.",
+      "correct_answer": "giraff",
+      "incorrect_answer": [
+        "elefant",
+        "katt",
+        "björn"
+      ]
+    },
+    {
+      "id": 24,
+      "question": ".... kan inte spy.",
+      "correct_answer": "Råttor kan inte spy.",
+      "incorrect_answer": [
+        "Elefanter",
+        "Giraffer",
+        "Hunder"
+      ]
+    },
+    {
+      "id": 25,
+      "question": "Det finns runt .... hundraser i Sverige.",
+      "correct_answer": "300",
+      "incorrect_answer": [
+        "80",
+        "1000",
+        "400"
+      ]
+    },
+    {
+      "id": 26,
+      "question": "..... älskade Tarzanfilmer.",
+      "correct_answer": "Stalin",
+      "incorrect_answer": [
+        "Lenin",
+        "Tito",
+        "Nixon"
+      ]
+    },
+    {
+      "id": 27,
+      "question": "Antalet personer som disputerat inom associationsrätt vid Uppsala universitet sedan 1600-talet är ...",
+      "correct_answer": "6",
+      "incorrect_answer": [
+        "102",
+        "1956",
+        "27"
+      ]
+    },
+    {
+      "id": 28,
+      "question": ".... är den film som baserats på ett tv-spel som dragit in mest pengar på bio",
+      "correct_answer": "Tomb Raider",
+      "incorrect_answer": [
+        "Street Fighter",
+        "Mortal Kombat",
+        "Max Payne"
+      ]
+    },
+    {
+      "id": 29,
+      "question": "I afrika använder många ....... till bygge av hus/hyddor.",
+      "correct_answer": "elefantbajs",
+      "incorrect_answer": [
+        "tegel",
+        "isoleringsmaterial",
+        "lera"
+      ]
+    },
+    {
+      "id": 30,
+      "question": "I USA är det enligt lag förbjudet att .... på ett kylskåp i Pittsburgh.",
+      "correct_answer": "sova",
+      "incorrect_answer": [
+        "sitta",
+        "stå",
+        "hoppa"
+      ]
+    },
+    {
+      "id": 31,
+      "question": "I Nevada, USA är det olagligt att rida .... på motorvägar.",
+      "correct_answer": "kamel",
+      "incorrect_answer": [
+        "häst",
+        "ponny",
+        "giraff"
+      ]
+    },
+    {
+      "id": 32,
+      "question": "Datorn som användes för att skicka iväg den första rymdraketen hade .... minne.",
+      "correct_answer": "0.04kb",
+      "incorrect_answer": [
+        "200gb",
+        "4gb",
+        "8kb"
+      ]
+    },
+    {
+      "id": 33,
+      "question": "Världens största hotell heter First hotel och ligger i Malaysia, och har .... rum",
+      "correct_answer": "6118",
+      "incorrect_answer": [
+        "3245",
+        "1362",
+        "10 492"
+      ]
+    },
+    {
+      "id": 34,
+      "question": "Ungefär ..... andra människor fyller år på din födelsedag.",
+      "correct_answer": "nio miljoner",
+      "incorrect_answer": [
+        "tio tusen",
+        "femhundratusen",
+        "åtta tusen"
+      ]
+    },
+    {
+      "id": 35,
+      "question": "Hästar står upp ca ...% av dess liv.",
+      "correct_answer": "92",
+      "incorrect_answer": [
+        "77",
+        "53",
+        "18"
+      ]
+    },
+    {
+      "id": 36,
+      "question": "Människor står upp ca ...% av dess liv.",
+      "correct_answer": "23",
+      "incorrect_answer": [
+        "12",
+        "46",
+        "34"
+      ]
+    },
+    {
+      "id": 37,
+      "question": "Hypernervokostiskadiafragmakonventatorerer är ett annat ord för ....",
+      "correct_answer": "hicka",
+      "incorrect_answer": [
+        "äta",
+        "andas djupt",
+        "svälja"
+      ]
+    },
+    {
+      "id": 38,
+      "question": "I afrika använder många ....... till bygge av hus/hyddor.",
+      "correct_answer": "elefantbajs",
+      "incorrect_answer": [
+        "tegel",
+        "isoleringsmaterial",
+        "lera"
+      ]
+    },
+    {
+      "id": 39,
+      "question": "världens högsta solros genom tiderna blev .... m.",
+      "correct_answer": "7,38",
+      "incorrect_answer": [
+        "1, 45",
+        "3, 67",
+        "13, 56"
+      ]
+    },
+    {
+      "id": 40,
+      "question": "I Sverige finns det 2 personer som heter .... i förnamn.",
+      "correct_answer": "Skalman",
+      "incorrect_answer": [
+        "Svamp",
+        "Gud",
+        "Lensman"
       ]
     }
   ]
