@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <img alt="vue logo" src="./assets/logo.png">
+    <img class = logo alt="vue logo" src="./assets/logo.png">
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/login">Login</router-link>
+      <router-link to="/login">FAQ</router-link>
+      <router-link to="/login">Kontakta Oss</router-link>
+      <router-view></router-view>
+    </div>
+    <hr>
     <testingcomp/>
-    <HelloWorld msg="Tjenare och välkommen"/>
+
 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import testingcomp from './components/testingcomp.vue'
 
 
@@ -16,7 +23,7 @@ import testingcomp from './components/testingcomp.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+
     testingcomp
   }
 }
@@ -32,4 +39,21 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+  .logo {
+    width:100px;
+    height: 100px;
+    margin-top: 0px;
+  }
+
+
+a {
+  color: lightseagreen;
+  text-decoration: none;
+  margin-right: 20px;
+}
+a:hover,
+a:visited {
+  text-decoration: underline;
+}
+
 </style>
