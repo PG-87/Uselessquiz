@@ -1,19 +1,14 @@
 <template>
     <div id="quiz">
         <h1 id="question">{{ question }}</h1>
-        <button id="next" style="display: inline" onclick="toggleShow()">Next question</button>
         <section>
             <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style">{{ answer.answer }}</button>
         </section>
+        <button id="next" style="display: inline" onclick="toggleShow()">Next question</button>
     </div>
 </template>
 
 <script>
-    // function toggleShow() {
-    //     document.getElementById("next").style.display='none'
-    //     // return this.style.display='none'
-    // }
-
     export default {
         name: "Quiz",
         props: {
@@ -52,18 +47,12 @@
         margin: auto;
         display: grid;
         grid-template-areas: "question" "next" "answers";
-        grid-template-rows: 130px 100px auto;
+        grid-template-rows: 100px auto 100px;
     }
 
     #question {
         text-align: center;
-    }
-
-    #next {
-        height: 70px;
-        width: 150px;
-        margin: auto;
-        border-radius: 10px
+        margin-top: 40px;
     }
 
     section {
@@ -78,6 +67,13 @@
         height: 70px;
         width: 320px;
         border-radius: 6px
+    }
+
+    #next {
+        height: 70px;
+        width: 150px;
+        margin: auto auto 30px;
+        border-radius: 10px
     }
 
 </style>
