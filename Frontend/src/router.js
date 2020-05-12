@@ -18,6 +18,18 @@ routes: [
         name: "login",
         component: () =>
             import( "./views/Login.vue")
+    },
+    {
+        path: "/kontaktaoss",
+        name: "kontaktaoss",
+        component: () =>
+            import( "./views/KontaktaOss.vue")
+    },
+    {
+        path: "/faq",
+        name: "faq",
+        component: () =>
+            import( "./views/FAQ.vue")
     }
 
 
