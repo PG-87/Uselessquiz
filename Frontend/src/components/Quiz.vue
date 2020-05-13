@@ -2,52 +2,84 @@
     <div id="quiz">
         <h1 id="question">{{ question }}</h1>
         <section>
-            <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style">{{
+            <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style" v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
                 answer.answer }}
             </button>
         </section>
-        <button id="next" style="display: inline" onclick="toggleShow()">Next question</button>
+        <button id="next" style="display: block" onclick="toggleShow()">Next question</button>
         <button @click="getQuestion()">Ny fråga</button>
+        <p>Score: {{ totalScore }}/100000</p>
+        <timer></timer>
     </div>
 </template>
 
 <script>
+    import Timer from "./Timer";
+
     export default {
         name: "Quiz",
+        components: {
+          Timer
+        },
         props: {
-            question: String,
+            // question: String,
             toggleShow: String,
-
+            correct: Boolean
         },
         data: function () {
             return {
                 answers: [
-                    {id: 1, answer: '', correct: false, style: {backgroundColor: '#ffffff'}},
-                    {id: 2, answer: '', correct: false, style: {backgroundColor: '#ffffff'}},
-                    {id: 3, answer: '', correct: false, style: {backgroundColor: '#ffffff'}},
-                    {id: 4, answer: '', correct: false, style: {backgroundColor: '#ffffff'}}
-                ]
+                    {id: 1, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff'}},
+                    {id: 2, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff'}},
+                    {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff'}},
+                    {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff'}}
+                ],
+                question: '',
+                totalScore: 0
             }
         },
         methods: {
-            getQuestion: function() {
+            getQuestion: function () {
                 fetch('http://127.0.0.1:3000/api/questions')
                     .then((response) => {
                         return response.json()
                     })
                     .then((data) => {
+                        this.answers.forEach(function(entry){
+                            entry.locked = false;
+                            entry.correct = false;
+                            entry.style.backgroundColor = '#ffffff';
+                        });
                         console.log(data.results);
                         this.question = data.question;
                         let answerArray = [data.correct_answer, data.incorrect_answer[0], data.incorrect_answer[1], data.incorrect_answer[2]];
                         answerArray.sort(() => Math.random() - 0.5);
                         this.answers.forEach(function (entry) {
                             entry.answer = answerArray.pop();
-                            if (entry.answer === data.correct_answer){
+                            if (entry.answer === data.correct_answer) {
                                 entry.correct = true;
                             }
                         });
                         console.log(this.answers)
                     })
+            },
+            checkAnswer: function (id) {
+                let i = id -1;
+                // console.log(this.answers[i].correct);
+                if (this.answers[i].correct === true) {
+                    this.answers[i].style.backgroundColor = '#8DFCC3';
+                     this.totalScore += 1
+                } else  {
+                    this.answers[i].style.backgroundColor = '#ff3636';
+                    this.answers.forEach( function (entry) {
+                        if (entry.correct === true) {
+                            entry.style.backgroundColor = '#8DFCC3';
+                        }
+                    })
+                }
+                this.answers.forEach(function(entry){
+                    entry.locked = true
+                })
             }
         }
     }
