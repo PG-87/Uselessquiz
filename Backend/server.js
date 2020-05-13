@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var cors = require('cors');
-//var db = require("./users.js");
+var db = require("./dataDB.js");
 var quizdb = require("./questions.json");
 
 app.use(cors());
@@ -37,4 +37,33 @@ app.get("/api/questions/range/:number", (req, res, next) => {
         }
     }
     res.json(numberArry)
+});
+
+app.get("/api/users", (req, res, next) => {
+    var sql = "select userid,user from USERS"
+    var params = []
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json({
+            "message":"success",
+            "user":rows
+        })
+    });
+});
+app.post("/api/users/login/:pass-:user", (req, res, next) => {
+    var sql = "select userId from USERS WHERE passCode = ? AND user = ?";
+    var params = [req.params.pass,req.params.user];
+     db.get(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json({
+            "message":"success",
+            "userid":rows
+        })
+    });
 });
