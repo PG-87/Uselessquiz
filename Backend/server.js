@@ -37,4 +37,4 @@ app.get("/api/questions/range/:number", (req, res, next) => {
         }
     }
     res.json(numberArry)
-})
+});
