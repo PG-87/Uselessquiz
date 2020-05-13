@@ -53,17 +53,18 @@ app.get("/api/users", (req, res, next) => {
         })
     });
 });
-app.post("/api/users/login/:pass-:user", (req, res, next) => {
-    var sql = "select userId from USERS WHERE passCode = ? AND user = ?";
-    var params = [req.params.pass,req.params.user];
+app.post("/api/users/login", (req, res, next) => {
+    var data ={
+        pass:req.body.pass,
+        user:req.body.user
+    }
+    var sql = "select userId,user,userEMAIL from USERS WHERE passCode = ? AND user = ?";
+    var params = [req.body.pass,req.body.user];
      db.get(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({"error":err.message});
             return;
         }
-        res.json({
-            "message":"success",
-            "userid":rows
-        })
+        res.json(rows);
     });
 });
