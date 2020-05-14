@@ -49,7 +49,7 @@
         /*background-color: rgb(230,230,230);*/
         height: auto;
         width: 800px;
-        margin: 0 auto;
+        margin:  auto;
         display: grid;
         grid-template-areas: 'score1' 'score2' 'score3';
         grid-template-columns: 250px 250px 250px;
