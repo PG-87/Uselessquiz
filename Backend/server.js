@@ -39,20 +39,42 @@ app.get("/api/questions/range/:number", (req, res, next) => {
     res.json(numberArry)
 });
 
-app.get("/api/users", (req, res, next) => {
-    var sql = "select userid,user from USERS"
-    var params = []
+app.put("/api/new_user", (req, res, next) => {
+    var txt ={
+            user:req.body.user,
+            pass:req.body.pass,
+            email:req.body.email
+    }
+    var txtdata=req.body.email.toString()
+    txtdata=txtdata.toLowerCase()
+
+    var sql = "select userid from USERS where userEMAIL = ?"
+    var params = [txtdata]
     db.all(sql, params, (err, rows) => {
         if (err) {
-            res.status(400).json({"error":err.message});
+            res.status(400).json({"error": err.message});
             return;
         }
+        if (rows.length === 1) {
         res.json({
-            "message":"success",
-            "user":rows
-        })
+            "Message":"User already exists"
+            })
+
+        }else{
+            insert = "INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)"
+            db.run(insert,[req.body.user,req.body.pass,txtdata])
+            sql = "select userid from USERS where userEMAIL = ?"
+            params = [txtdata]
+            db.all(sql, params, (err2,rows2) => {
+                res.json(rows2);
+            });
+
+        }
     });
+
+
 });
+
 app.post("/api/users/login", (req, res, next) => {
     var data ={
         pass:req.body.pass,
