@@ -12,8 +12,16 @@
         <button id="next" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
             fråga
         </button>
-        <button id="start" @click="getQuestion()" v-bind:disabled=newGameLock :style="start.style">Starta quiz</button>
+        <ul id="start">
+            <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock :style="start.style">10 Frågor</button></li>
+            <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock :style="start.style">15 Frågor</button></li>
+            <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock :style="start.style">20 Frågor</button></li>
+        </ul>
         <button id="result" @click="showResult()" :style="result.style">Resultat</button>
+<!--        <ul v-for="r in resultArr" v-bind:key="r.question">-->
+<!--            <li>Question: {{ r.question }}</li>-->
+<!--            <li>Correct answer:  {{ r.correct_answer }} | Your answer:  {{ r.your_answer }}</li>-->
+<!--        </ul>-->
         <!--        <timer></timer>-->
     </div>
 </template>
@@ -46,13 +54,26 @@
                 newGameLock: false,
                 questionNumber: 0,
                 questions: [],
+                resultArr: [],
                 question: '',
                 scoreSum: 0
             }
         },
         methods: {
-            getQuestion: function () {
-                fetch('http://127.0.0.1:3000/api/questions/range/10')
+            getQuestion: function (n) {
+                let input;
+                switch (n) {
+                    case 10:
+                        input = '10';
+                        break;
+                    case 15:
+                        input = '15';
+                        break;
+                    case 20:
+                        input = '20';
+                        break;
+                }
+                fetch('http://127.0.0.1:3000/api/questions/range/' + input)
                     .then((response) => {
                         return response.json()
                     })
@@ -114,7 +135,10 @@
                 this.questionNumber += 1
             },
             checkAnswer: function (id) {
-                let i = id - 1;
+                let i = id - 1,
+                    q = this.question,
+                    corrAns = this.questions[this.questionNumber - 1].correct_answer,
+                    yourAns = this.answers[i].answer;
                 // console.log(this.answers[i].correct);
                 if (this.answers[i].correct === true) {
                     // this.answers[i].style.backgroundColor = '#32C832';
@@ -131,7 +155,14 @@
                 }
                 this.answers.forEach(function (entry) {
                     entry.locked = true
-                })
+                });
+
+                //result
+                // console.log(q);
+                // console.log(corrAns);
+                // console.log(yourAns);
+                this.resultArr.push({question: q, correct_answer: corrAns, your_answer: yourAns});
+
 
                 if (this.questionNumber < this.questions.length) {
                     this.next.style.display = 'initial';
@@ -142,6 +173,16 @@
                 //     console.log('next');
                 //     this.next.style.display = 'none'
                 // }
+            },
+            showResult: function () {
+                console.log(this.resultArr);
+                this.answers.forEach(function (entry) {
+                    entry.style.display = 'none'
+                });
+                this.next.style.display = 'none';
+                this.info.style.display = 'none';
+                this.question = '';
+                this.result.style.display = 'none'
             }
         }
     }
@@ -156,7 +197,7 @@
         margin: auto;
         display: grid;
         /*grid-template-areas: "question" "next" "answers";*/
-        grid-template-rows: 150px 250px 100px;
+        grid-template-rows: 150px 250px auto;
         /*background-image: url("../assets/logo.png");*/
     }
 
@@ -184,12 +225,17 @@
         font-size: 20px;
     }
 
-    #start, #next, #result {
+    .start, #next, #result {
         width: 200px;
         /*color: #2c3e50;*/
         background-color: white;
         font-size: 25px;
         font-style: italic;
+    }
+
+    li {
+        list-style: none;
+        padding-bottom: 10px;
     }
 
     #next {
@@ -198,11 +244,11 @@
 
     #start {
         position: absolute;
-        top: 435px;
+        top: 325px;
         left: 250px;
         right: 250px;
         /*background: #8DFCC3;*/
-        background: rgba(50,200,50,0.5);
+        /*background: rgba(50,200,50,0.5);*/
     }
 
     p {
