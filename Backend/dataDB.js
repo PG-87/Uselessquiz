@@ -21,7 +21,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 var insert = 'INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)'
                 db.run(insert, ["Tugba","1234","Tugba@test.com"])
                 db.run(insert, ["Nicklas","1234","Nicklas@test.com"])
-                db.run(insert, ["PG","1234","PG@test.com"])
+                db.run(insert, ["PG","1234","pg@test.com"])
                 db.run(insert, ["Christoffer","1234","toffe@test.com"])
 
             }
