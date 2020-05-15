@@ -9,7 +9,7 @@
             <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
         </ul>
         <ul>
-            <h3>Top score for 30 questions</h3>
+            <h3>Top score for 20 questions</h3>
             <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
         </ul>
     </div>
