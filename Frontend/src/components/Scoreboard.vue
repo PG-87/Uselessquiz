@@ -18,6 +18,9 @@
 <script>
     export default {
         name: "Scoreboard",
+        // props: {
+        //     scriptStyle: String,
+        // },
         data: function () {
             return {
                 scores1: [
@@ -49,9 +52,9 @@
         /*background-color: rgb(230,230,230);*/
         height: auto;
         width: 800px;
-        margin:  auto;
+        margin: auto;
         display: grid;
-        grid-template-areas: 'score1' 'score2' 'score3';
+        /*grid-template-areas: 'score1' 'score2' 'score3';*/
         grid-template-columns: 250px 250px 250px;
         grid-gap: 2px 23px;
     }
@@ -72,12 +75,12 @@
         font-size: 20px;
         margin: 0;
         /*background-color: white;*/
-        background-color: rgb(230,230,230);
+        /*background-color: rgb(230,230,230);*/
     }
 
     li {
         /*background-color: white;*/
-        background-color: rgb(230,230,230);
+        /*background-color: rgb(230,230,230);*/
     }
 
 </style>

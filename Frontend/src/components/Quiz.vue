@@ -1,27 +1,30 @@
 <template>
     <div id="quiz">
+        <Scoreboard id="scoreboard" v-bind:style="resultScreen.style"></Scoreboard>
+        <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
+            <li><hr></li>
+            <li>Fråga {{r.nr}}: {{ r.question }}</li>
+            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt saver:  {{ r.your_answer }}</li>
+<!--            <li><hr></li>-->
+        </ul>
         <h1 id="question">{{ question }}</h1>
-        <section>
+        <section v-bind:style="info.style">
             <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style"
                     v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
                 answer.answer }}
             </button>
-            <p id="score" v-bind:style="info.style">Score: {{ scoreSum }}/{{questions.length}}</p>
-            <p id="round" v-bind:style="info.style">Fråga: {{ questionNumber }}/{{questions.length}}</p>
+            <p id="score">Score: {{ scoreSum }}/{{questions.length}}</p>
+            <p id="round">Fråga: {{ questionNumber }}/{{questions.length}}</p>
         </section>
-        <button id="next" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
+        <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
             fråga
         </button>
-        <ul id="start">
+        <ul id="startButton">
             <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock :style="start.style">10 Frågor</button></li>
             <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock :style="start.style">15 Frågor</button></li>
             <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock :style="start.style">20 Frågor</button></li>
         </ul>
-        <button id="result" @click="showResult()" :style="result.style">Resultat</button>
-<!--        <ul v-for="r in resultArr" v-bind:key="r.question">-->
-<!--            <li>Question: {{ r.question }}</li>-->
-<!--            <li>Correct answer:  {{ r.correct_answer }} | Your answer:  {{ r.your_answer }}</li>-->
-<!--        </ul>-->
+        <button id="resultButton" @click="showResult()" :style="result.style">Resultat</button>
         <!--        <timer></timer>-->
     </div>
 </template>
@@ -29,9 +32,11 @@
 <script>
     // import Timer from "./Timer";
 
+    import Scoreboard from "./Scoreboard";
     export default {
         name: "Quiz",
         components: {
+            Scoreboard
             // Timer
         },
         props: {
@@ -49,7 +54,9 @@
                 ],
                 start: {lockButton: false, style: {display: 'initial'}},
                 next: {lockButton: false, style: {display: 'none'}},
+                resultScreen: {style: {display: 'none'}},
                 result: {style: {display: 'none'}},
+                // section: {style: {display: 'none'}},
                 info: {style: {display: 'none'}},
                 newGameLock: false,
                 questionNumber: 0,
@@ -91,7 +98,7 @@
                             entry.style.display = 'initial'
                         });
                         this.next.style.display = 'initial';
-                        this.info.style.display = 'initial';
+                        this.info.style.display = 'grid';
                         this.nextQuestion(0);
 
                         // this.answers.forEach(function(entry){
@@ -161,7 +168,7 @@
                 // console.log(q);
                 // console.log(corrAns);
                 // console.log(yourAns);
-                this.resultArr.push({question: q, correct_answer: corrAns, your_answer: yourAns});
+                this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns});
 
 
                 if (this.questionNumber < this.questions.length) {
@@ -182,7 +189,8 @@
                 this.next.style.display = 'none';
                 this.info.style.display = 'none';
                 this.question = '';
-                this.result.style.display = 'none'
+                this.result.style.display = 'none';
+                this.resultScreen.style.display = 'grid';
             }
         }
     }
@@ -192,12 +200,14 @@
 
     #quiz {
         /*background-color: rgb(230,230,230);*/
-        height: 500px;
+        height: auto;
         width: 800px;
         margin: auto;
         display: grid;
         /*grid-template-areas: "question" "next" "answers";*/
-        grid-template-rows: 150px 250px auto;
+        /*grid-template-rows: 150px 250px auto 1fr;*/
+        grid-template-rows: minmax(150px, auto) auto auto 1fr;
+        /*grid-template-rows: 150px auto auto 1fr;*/
         /*background-image: url("../assets/logo.png");*/
     }
 
@@ -225,7 +235,7 @@
         font-size: 20px;
     }
 
-    .start, #next, #result {
+    .start, #nextButton, #resultButton {
         width: 200px;
         /*color: #2c3e50;*/
         background-color: white;
@@ -238,11 +248,7 @@
         padding-bottom: 10px;
     }
 
-    #next {
-
-    }
-
-    #start {
+    #startButton {
         position: absolute;
         top: 325px;
         left: 250px;
@@ -264,5 +270,28 @@
         text-align: start;
         margin-left: 10px;
     }
+
+    #scoreboard {
+        /*background-color: #3498DB;*/
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+    ul li hr {
+        margin-bottom: 25px;
+        /*width: 750px;*/
+    }
+
+    #result {
+        margin-top: 0;
+        padding-left: 0;
+        /*background-color: #3498DB;*/
+    }
+
+    #result li {
+        padding-bottom: 0;
+        font-size: 20px;
+    }
+
 
 </style>

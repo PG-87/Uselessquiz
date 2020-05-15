@@ -11,20 +11,20 @@
         </div>
         <!--    <hr>-->
         <Quiz question="Placeholder question"></Quiz>
-        <Scoreboard></Scoreboard>
+<!--        <Scoreboard></Scoreboard>-->
     </div>
 </template>
 
 <script>
     import Quiz from "./components/Quiz";
-    import Scoreboard from "./components/Scoreboard";
+    // import Scoreboard from "./components/Scoreboard";
 
 
     export default {
         name: 'App',
         components: {
             Quiz,
-            Scoreboard,
+            // Scoreboard,
         }
     }
 
@@ -37,8 +37,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
-        /*display: grid;*/
+        /*margin-top: 60px;*/
     }
 
     .logo {
@@ -47,6 +46,9 @@
         margin-top: 0px;
     }
 
+    hr {
+        /*width: 800px;*/
+    }
 
     a {
         color: lightseagreen;
@@ -58,5 +60,4 @@
     a:visited {
         text-decoration: underline;
     }
-
 </style>
