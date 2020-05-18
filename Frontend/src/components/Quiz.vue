@@ -47,10 +47,10 @@
         data: function () {
             return {
                 answers: [
-                    {id: 1, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}},
-                    {id: 2, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}},
-                    {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}},
-                    {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}}
+                    {id: 1, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
+                    {id: 2, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
+                    {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
+                    {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}}
                 ],
                 start: {lockButton: false, style: {display: 'initial'}},
                 next: {lockButton: false, style: {display: 'none'}},
@@ -123,7 +123,7 @@
                 this.answers.forEach(function (entry) {
                     entry.locked = false;
                     entry.correct = false;
-                    entry.style.backgroundColor = '#ffffff';
+                    entry.style.backgroundColor = '#3498DB';
                 });
 
                 this.next.style.display = 'none';
@@ -149,14 +149,14 @@
                 // console.log(this.answers[i].correct);
                 if (this.answers[i].correct === true) {
                     // this.answers[i].style.backgroundColor = '#32C832';
-                    this.answers[i].style.backgroundColor = '#8DFCC3';
+                    this.answers[i].style.backgroundColor = '#60BF6B';
                     this.scoreSum += 1
                 } else {
                     this.answers[i].style.backgroundColor = '#ff3636';
                     this.answers.forEach(function (entry) {
                         if (entry.correct === true) {
                             // entry.style.backgroundColor = '#32C832';
-                            entry.style.backgroundColor = '#8DFCC3';
+                            entry.style.backgroundColor = '#60BF6B';
                         }
                     })
                 }
@@ -233,16 +233,26 @@
     .answerButton {
         width: 320px;
         font-size: 20px;
+        color: white;
+    }
+
+    .answerButton:hover {
+        background-color: #444444;
     }
 
     .start, #nextButton, #resultButton {
         width: 200px;
-        /*color: #2c3e50;*/
-        background-color: white;
+        /*background-color: white;*/
+        background-color: #3498DB;
+        color: white;
         font-size: 25px;
         font-style: italic;
         position: relative;
 
+    }
+
+    .start:hover, #nextButton:hover, #resultButton:hover {
+        background-color: #2980B9;
     }
 
     li {
