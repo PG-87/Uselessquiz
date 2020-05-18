@@ -9,24 +9,11 @@
             <hr>
             <router-view></router-view>
         </div>
-        <!--    <hr>-->
-        <Quiz question="Placeholder question"></Quiz>
-<!--        <Scoreboard></Scoreboard>-->
+
     </div>
 </template>
 
 <script>
-    import Quiz from "./components/Quiz";
-    // import Scoreboard from "./components/Scoreboard";
-
-
-    export default {
-        name: 'App',
-        components: {
-            Quiz,
-            // Scoreboard,
-        }
-    }
 
 </script>
 
