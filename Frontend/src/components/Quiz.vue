@@ -52,7 +52,7 @@
                     {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}},
                     {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#ffffff', display: 'none'}}
                 ],
-                start: {lockButton: false, style: {display: 'initial'}},
+                start: {lockButton: false, style: {display: 'inline'}},
                 next: {lockButton: false, style: {display: 'none'}},
                 resultScreen: {style: {display: 'none'}},
                 result: {style: {display: 'none'}},
@@ -247,7 +247,11 @@
 
     li {
         list-style: none;
-        padding-bottom: 10px;
+        padding-right: 10px;
+    }
+
+    #startButton li {
+        display: inline;
     }
 
     #startButton {
