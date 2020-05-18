@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 
+
 Vue.use(Router);
 
 export default new Router ({
@@ -30,6 +31,12 @@ routes: [
         name: "faq",
         component: () =>
             import( "./views/FAQ.vue")
+    },
+    {
+        path: "/register",
+        name: "register",
+        component: () =>
+            import( "./views/Register.vue")
     }
 
 
