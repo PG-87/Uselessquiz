@@ -31,11 +31,4 @@
         font-family: Calibri, Arial, sans-serif;
     }
 
-    button {
-        border-radius: 6px;
-        margin: 50px;
-        height: 70px;
-        width: 150px;
-        background-color: white;
-    }
 </style>
