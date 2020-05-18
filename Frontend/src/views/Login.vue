@@ -2,22 +2,48 @@
     <div class="login">
         <div class="login-screen">
             <div class="app-title">
-                <h1>Logga in</h1>
+                <h1>Sign in</h1>
             </div>
 
             <div class="login-form">
                 <div class="control-group">
-                    <input type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
+                    <input v-model="name" type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
                     <label class="login-field-icon fui-user" for="login-name"></label>
                 </div>
 
                 <div class="control-group">
-                    <input type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
+                    <input v-model="password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
 
-                <a class="btn btn-primary btn-large btn-block" href="#">logga in</a>
-                <a class="login-link" href="#">Glömde din lösenord?</a>
+                <a @click="postData" class="btn btn-primary btn-large btn-block">Sign in</a>
+                <a class="login-link" href="#">Vill du sign up?</a>
+
+            </div>
+        </div>
+        <div class="login-screen">
+            <div class="app-title">
+                <h1>Sign up</h1>
+            </div>
+
+            <div class="login-form">
+                <div class="control-group">
+                    <input type="text"  v-model="RegName" class="login-field" value="" placeholder="användarnamn" id="signup-name">
+                    <label class="login-field-icon fui-user" for="signup-name"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="password"  v-model="RegPassword"  class="login-field" value="" placeholder="lösenord" id="signup-pass">
+                    <label class="login-field-icon fui-lock" for="signup-pass"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="email"  v-model="RegEmail" class="login-field" value="" placeholder="email" id="signup-mail">
+                    <label class="login-field-icon fui-lock" for="signup-mail"></label>
+                </div>
+
+                <a class="btn btn-primary btn-large btn-block" @click="putData">Sign up</a>
+
             </div>
         </div>
     </div>
@@ -25,7 +51,48 @@
 
 
 <script>
+    export default {
+        data: function () {
+            return {
+                email: "",
+                password: "",
+                name: "",
+                RegEmail: "",
+                RegPassword: "",
+                RegName: "",
+            }
 
+        },
+        methods: {
+            postData: async function () {
+                // POST request using fetch with async/await
+                const requestOptions = {
+                    method: "POST",
+                    mode: 'cors',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({user: this.name, pass: this.password})
+                };
+                const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
+                const data = await response.json();
+                console.log(data)
+            },
+            putData: async function () {
+                // POST request using fetch with async/await
+                const requestOptions = {
+                    method: "PUT",
+                    mode: 'cors',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({user: this.RegName, pass: this.RegPassword, email: this.RegEmail})
+                };
+                const response = await fetch("http://127.0.0.1:3000/api/new_user", requestOptions);
+                const data = await response.json();
+                console.log(data)
+
+
+            }
+        }
+
+    }
 </script>
 
 <style>
@@ -44,11 +111,16 @@
     .login {
         margin: 20px auto;
         width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     .login-screen {
         background-color: #FFF;
         padding: 20px;
-        border-radius: 5px
+        border-radius: 5px;
+        margin-right: 10px;
+
     }
 
     .app-title {

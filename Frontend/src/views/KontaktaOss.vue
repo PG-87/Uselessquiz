@@ -1,29 +1,23 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <h4 style="text-align:center">Vi skulle gärna höra från dig!</h4>
-        </div>
-        <div class="row input-container">
-            <div class="col-xs-12">
-                <div class="styled-input wide">
-                    <input type="text" required />
-                    <label>Namn</label>
-                </div>
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h3>Vi skulle gärna höra från dig!</h3>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="styled-input">
-                    <input type="text" required />
-                    <label>Email</label>
+
+            <div class="login-form">
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
                 </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="styled-input wide">
-                    <textarea required></textarea>
-                    <label>Meddelande</label>
+
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="meddelande" id="meddelande">
+                    <label class="login-field-icon fui-lock" for="meddelande"></label>
                 </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="btn-lrg submit-btn">Skicka Meddelande</div>
+
+                <a class="btn btn-primary btn-large btn-block" href="#">Skicka Meddelande</a>
+
             </div>
         </div>
     </div>
@@ -34,130 +28,87 @@
 </script>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    *:focus {
+        outline: none;
+    }
     body {
+        font-family: Arial;
         background-color: lightgrey;
-        padding-top: 10px;
+        padding: 50px;
+    }
+    .login {
+        margin: 20px auto;
+        width: 300px;
+
+
+    }
+    .login-screen {
+        background-color: #FFF;
+        padding: 20px;
+        border-radius: 5px;
+        margin-right: 50px;
+
+
     }
 
+    .app-title {
+        text-align: center;
+        color: #777;
+    }
 
+    .login-form {
+        text-align: center;
+    }
+    .control-group {
+        margin-bottom: 10px;
+    }
 
-    h4 {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
+    input {
+        text-align: center;
+        background-color: #ECF0F1;
+        border: 2px solid transparent;
+        border-radius: 3px;
+        font-size: 16px;
         font-weight: 200;
-        font-size: 20px;
-        color: darkslateblue;
-        line-height: 1.5;
-        alignment: center;
-    }
-
-    /* ///// inputs /////*/
-
-    input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
-        font-size: 0.2em;
-        color: #999;
-        top: -5px;
-        -webkit-transition: all 0.225s ease;
-        transition: all 0.225s ease;
-    }
-
-    .styled-input {
-        float: left;
+        padding: 10px 0;
         width: 250px;
-        margin: 1rem 0;
-        position: relative;
-        border-radius: 4px;
+        transition: border .5s;
     }
 
-    @media only screen and (max-width: 768px){
-        .styled-input {
-            width:100%;
-        }
+    input:focus {
+        border: 2px solid #3498DB;
+        box-shadow: none;
     }
 
-    .styled-input label {
-        color: #999;
-        padding: 1.3rem 30px 1rem 30px;
-        position: absolute;
-        top: 10px;
-        left: 0;
-        -webkit-transition: all 0.25s ease;
-        transition: all 0.25s ease;
-        pointer-events: none;
-    }
-
-    .styled-input.wide {
+    .btn {
+        border: 2px solid transparent;
+        background: #3498DB;
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 25px;
+        padding: 10px 0;
+        text-decoration: none;
+        text-shadow: none;
+        border-radius: 3px;
+        box-shadow: none;
+        transition: 0.25s;
+        display: block;
         width: 250px;
-        max-width: 100%;
+        margin: 0 auto;
     }
 
-    input,
-    textarea {
-        padding: 30px;
-        border: 0;
-        width: 100%;
-        font-size: 1rem;
-        background-color: whitesmoke;
-        color: black;
-        border-radius: 4px;
+    .btn:hover {
+        background-color: #2980B9;
     }
 
-    input:focus,
-    textarea:focus { outline: 0; }
-
-    input:focus ~ span,
-    textarea:focus ~ span {
-        width: 100%;
-        -webkit-transition: all 0.075s ease;
-        transition: all 0.075s ease;
-    }
-
-    textarea {
-        width: 100%;
-        min-height: 10em;
-    }
-
-    .input-container {
-        width: 250px;
-        max-width: 100%;
-        margin: 20px auto 25px auto;
-    }
-
-    .submit-btn {
-        float: right;
-        padding: 7px 35px;
-        border-radius: 60px;
-        display: inline-block;
-        background-color: darkgray;
-        color: darkslateblue;
-        font-size: 14px;
-        cursor: pointer;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
-        0 2px 10px 0 rgba(0,0,0,0.07);
-        -webkit-transition: all 300ms ease;
-        transition: all 300ms ease;
-    }
-
-    .submit-btn:hover {
-        transform: translateY(1px);
-        box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
-        0 1px 1px 0 rgba(0,0,0,0.09);
-    }
-
-    @media (max-width: 768px) {
-        .submit-btn {
-            width:100%;
-            float: none;
-            text-align:center;
-        }
-    }
-
-    input[type=checkbox] + label {
-        color: #ccc;
-        font-style: italic;
-    }
-
-    input[type=checkbox]:checked + label {
-        color: #f00;
-        font-style: normal;
+    .login-link {
+        font-size: 12px;
+        color: #444;
+        display: block;
+        margin-top: 12px;
     }
 </style>
