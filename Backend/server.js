@@ -1,3 +1,4 @@
+//<editor-fold desc="Dependices and basic settings">
 var express = require("express");
 var app = express();
 var cors = require('cors');
@@ -12,12 +13,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var HTTP_PORT = 3000;
+//</editor-fold>
 
 //Start the server
 app.listen(HTTP_PORT, () => {
     console.log("Server running on port: " + HTTP_PORT);
 });
 
+//<editor-fold desc="Questions handle">
 app.get("/api/questions", (req, res, next) => {
     let rnd=Math.floor(Math.random() * quizdb.questions.length);
     res.json(quizdb.questions[rnd])
@@ -27,7 +30,6 @@ app.get("/api/questions/:id", (req, res, next) => {
    console.log(quizdb.questions[req.params.id-1].correct_answer);
     res.json(quizdb.questions[req.params.id-1])
 });
-
 app.get("/api/questions/range/:number", (req, res, next) => {
     let numberArry = [];
     while (numberArry.length < req.params.number) {
@@ -38,7 +40,9 @@ app.get("/api/questions/range/:number", (req, res, next) => {
     }
     res.json(numberArry)
 });
+//</editor-fold>
 
+//<editor-fold desc="User handle">
 app.put("/api/new_user", (req, res, next) => {
     var txt ={
             user:req.body.user,
@@ -47,9 +51,10 @@ app.put("/api/new_user", (req, res, next) => {
     }
     var txtdata=req.body.email.toString()
     txtdata=txtdata.toLowerCase()
-
-    var sql = "select userid from USERS where userEMAIL = ?"
-    var params = [txtdata]
+    txtdata=[txtdata]
+    txtdata.push(req.body.user.toString())
+    var sql = "select userid from USERS where userEMAIL = ? OR user = ?"
+    var params = txtdata
     db.all(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({"error": err.message});
@@ -71,10 +76,7 @@ app.put("/api/new_user", (req, res, next) => {
 
         }
     });
-
-
 });
-
 app.post("/api/users/login", (req, res, next) => {
     var data ={
         pass:req.body.pass,
@@ -90,3 +92,20 @@ app.post("/api/users/login", (req, res, next) => {
         res.json(rows);
     });
 });
+//</editor-fold>
+
+//<editor-fold desc="Scoreboard handle">
+app.get("/api/scores", (req, res, next) => {
+
+    var sql = "SELECT USERS.user,MAX(Scoreboard.score),Scoreboard.datetime,Scoreboard.question_amout FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId GROUP BY USERS.user ORDER BY Scoreboard.score DESC; "
+    //var params = [req.body.pass,req.body.user];
+    db.all(sql,  (err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+
+        res.json(rows);
+    });
+})
+//</editor-fold>
