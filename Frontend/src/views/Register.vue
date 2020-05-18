@@ -1,39 +1,38 @@
 <template>
-    <div class="login">
+    <div class ="login">
         <div class="login-screen">
             <div class="app-title">
-                <h1>Sign in</h1>
+            <h1>Sign up</h1>
             </div>
 
             <div class="login-form">
                 <div class="control-group">
-                    <input v-model="name" type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
-                    <label class="login-field-icon fui-user" for="login-name"></label>
+                    <input type="text"  v-model="RegName" class="login-field" value="" placeholder="användarnamn" id="signup-name">
+                    <label class="login-field-icon fui-user" for="signup-name"></label>
                 </div>
 
                 <div class="control-group">
-                    <input v-model="password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
-                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    <input type="password"  v-model="RegPassword"  class="login-field" value="" placeholder="lösenord" id="signup-pass">
+                    <label class="login-field-icon fui-lock" for="signup-pass"></label>
                 </div>
 
-                <a @click="postData" class="btn btn-primary btn-large btn-block">Logga in</a>
-                <router-link to="/register">Vill du registrera dig </router-link>
+                <div class="control-group">
+                    <input type="email"  v-model="RegEmail" class="login-field" value="" placeholder="email" id="signup-mail">
+                    <label class="login-field-icon fui-lock" for="signup-mail"></label>
+                </div>
+
+                <a class="btn btn-primary btn-large btn-block" @click="putData">Registrera dig</a>
 
             </div>
-            <router-view></router-view>
         </div>
-
     </div>
-</template>
 
+</template>
 
 <script>
     export default {
         data: function () {
             return {
-                email: "",
-                password: "",
-                name: "",
                 RegEmail: "",
                 RegPassword: "",
                 RegName: "",
@@ -41,18 +40,7 @@
 
         },
         methods: {
-            postData: async function () {
-                // POST request using fetch with async/await
-                const requestOptions = {
-                    method: "POST",
-                    mode: 'cors',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({user: this.name, pass: this.password})
-                };
-                const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
-                const data = await response.json();
-                console.log(data)
-            },
+
             putData: async function () {
                 // POST request using fetch with async/await
                 const requestOptions = {
@@ -64,12 +52,14 @@
                 const response = await fetch("http://127.0.0.1:3000/api/new_user", requestOptions);
                 const data = await response.json();
                 console.log(data)
+                alert("Tack för registret")
 
 
             }
         }
 
     }
+
 </script>
 
 <style>
@@ -132,7 +122,7 @@
     .btn {
         border: 2px solid transparent;
         background: #3498DB;
-        color: lightyellow;
+        color: #ffffff;
         font-size: 16px;
         line-height: 25px;
         padding: 10px 0;
@@ -150,11 +140,6 @@
         background-color: #2980B9;
     }
 
-    .login-link {
-        font-size: 12px;
-        color: #444;
-        display: block;
-        margin-top: 12px;
-    }
+
 
 </style>

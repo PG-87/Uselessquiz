@@ -38,9 +38,10 @@
     }
 
     a {
-        color: lightseagreen;
+        color: darkslategrey;
         text-decoration: none;
-        margin-right: 20px;
+        padding: 0 10px;
+
     }
 
     a:hover,
