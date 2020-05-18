@@ -19,10 +19,10 @@
         <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
             fråga
         </button>
-        <ul id="startButton">
-            <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock :style="start.style">10 Frågor</button></li>
-            <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock :style="start.style">15 Frågor</button></li>
-            <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock :style="start.style">20 Frågor</button></li>
+        <ul id="startButton" :style="start.style">
+            <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock>10 Frågor</button></li>
+            <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock>15 Frågor</button></li>
+            <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock>20 Frågor</button></li>
         </ul>
         <button id="resultButton" @click="showResult()" :style="result.style">Resultat</button>
         <!--        <timer></timer>-->
@@ -241,6 +241,8 @@
         background-color: white;
         font-size: 25px;
         font-style: italic;
+        position: relative;
+
     }
 
     li {

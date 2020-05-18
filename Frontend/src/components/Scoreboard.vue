@@ -1,15 +1,15 @@
 <template>
     <div id="scoreboard">
         <ul>
-            <h3>Top score for 10 questions</h3>
+            <h3>Highscore för 10 frågor</h3>
             <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
         </ul>
         <ul>
-            <h3>Top score for 15 questions</h3>
+            <h3>Highscore för 15 frågor</h3>
             <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
         </ul>
         <ul>
-            <h3>Top score for 20 questions</h3>
+            <h3>Highscore för 20 frågor</h3>
             <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
         </ul>
     </div>
