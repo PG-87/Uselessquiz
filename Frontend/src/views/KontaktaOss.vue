@@ -35,11 +35,7 @@
     *:focus {
         outline: none;
     }
-    body {
-        font-family: Arial;
-        background-color: lightgrey;
-        padding: 50px;
-    }
+
     .login {
         margin: 20px auto;
         width: 300px;
@@ -51,6 +47,7 @@
         padding: 20px;
         border-radius: 5px;
         margin-right: 50px;
+        border-style: solid;
 
 
     }
@@ -105,10 +102,14 @@
         background-color: #2980B9;
     }
 
-    .login-link {
-        font-size: 12px;
-        color: #444;
-        display: block;
-        margin-top: 12px;
+    #meddelande{
+
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 3.6em;
+        line-height: 1.8em;
     }
+
+
 </style>

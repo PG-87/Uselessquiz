@@ -24,6 +24,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
+
     }
 
     .logo {
@@ -34,6 +35,7 @@
 
     a {
         color: darkslategrey;
+        font-weight: bolder;
         text-decoration: none;
         padding: 0 10px;
 
