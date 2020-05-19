@@ -70,11 +70,7 @@
     *:focus {
         outline: none;
     }
-    body {
-        font-family: Arial;
-        background-color: lightgrey;
-        padding: 50px;
-    }
+
     .login {
         margin: 20px auto;
         width: 300px;
@@ -87,6 +83,7 @@
         padding: 20px;
         border-radius: 5px;
         margin-right: 10px;
+        border-style: solid;
 
     }
 

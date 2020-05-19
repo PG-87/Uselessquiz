@@ -17,6 +17,7 @@
                 </div>
 
                 <a @click="postData" class="btn btn-primary btn-large btn-block">Logga in</a>
+                <br>
                 <router-link to="/register">Vill du registrera dig </router-link>
 
             </div>
@@ -80,11 +81,7 @@
     *:focus {
         outline: none;
     }
-    body {
-        font-family: Arial;
-        background-color: lightgrey;
-        padding: 50px;
-    }
+
     .login {
         margin: 20px auto;
         width: 300px;
@@ -97,6 +94,7 @@
         padding: 20px;
         border-radius: 5px;
         margin-right: 10px;
+        border-style: solid;
 
     }
 
@@ -150,11 +148,6 @@
         background-color: #2980B9;
     }
 
-    .login-link {
-        font-size: 12px;
-        color: #444;
-        display: block;
-        margin-top: 12px;
-    }
+
 
 </style>

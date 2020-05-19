@@ -240,7 +240,7 @@
         background-color: #444444;
     }
 
-    .start, #nextButton, #resultButton {
+    #nextButton, #resultButton {
         width: 200px;
         /*background-color: white;*/
         background-color: #3498DB;
@@ -251,7 +251,22 @@
 
     }
 
-    .start:hover, #nextButton:hover, #resultButton:hover {
+    .start {
+        width: 150px;
+        background-color: #3498DB;
+        color: #2c3e50;
+        font-weight: bolder;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        /*font-style: italic;*/
+        position: relative;
+    }
+
+    .start:hover {
+        background-color: #9c93a3 ;
+    }
+
+    #nextButton:hover, #resultButton:hover {
         background-color: #2980B9;
     }
 
@@ -266,9 +281,9 @@
 
     #startButton {
         position: absolute;
-        top: 325px;
-        left: 250px;
-        right: 250px;
+        top: 300px;
+        left: 50px;
+        right: 50px;
         /*background: #8DFCC3;*/
         /*background: rgba(50,200,50,0.5);*/
     }
