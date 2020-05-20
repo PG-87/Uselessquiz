@@ -9,16 +9,18 @@
             highscore listan.</p>
         </div>
         <Quiz></Quiz>
+        <Scoreboard></Scoreboard>
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
-
+    import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
+            Scoreboard
         }
     }
 </script>
