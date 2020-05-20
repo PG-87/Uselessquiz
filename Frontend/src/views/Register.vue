@@ -42,7 +42,7 @@
         methods: {
 
             putData: async function () {
-                // POST request using fetch with async/await
+                // PUT request using fetch with async/await
                 const requestOptions = {
                     method: "PUT",
                     mode: 'cors',

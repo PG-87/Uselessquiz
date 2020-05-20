@@ -4,7 +4,7 @@
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
-            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt saver:  {{ r.your_answer }}</li>
+            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }}</li>
 <!--            <li><hr></li>-->
         </ul>
         <h1 id="question">{{ question }}</h1>
@@ -241,8 +241,8 @@
 
     .start {
         width: 150px;
-        background-color: #3498DB;
-        color: #2c3e50;
+        background-color: darkslateblue;
+        color: antiquewhite;
         font-weight: bolder;
         font-family: Arial, sans-serif;
         font-size: 20px;

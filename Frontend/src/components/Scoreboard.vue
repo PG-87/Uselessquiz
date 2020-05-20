@@ -1,46 +1,97 @@
 <template>
     <div id="scoreboard">
-        <ul>
+        <ol>
             <h3>Highscore för 10 frågor</h3>
-            <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
-        </ul>
-        <ul>
+            <li class="score" v-for="score in scores1" v-bind:key="score.id">{{score.user}} {{ score.score }}
+                {{score.date}}
+            </li>
+        </ol>
+        <ol>
             <h3>Highscore för 15 frågor</h3>
-            <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
-        </ul>
-        <ul>
+            <li class="score" v-for="score in scores2" v-bind:key="score.id">{{score.user}} {{ score.score }}
+                {{score.date}}</li>
+        </ol>
+        <ol>
             <h3>Highscore för 20 frågor</h3>
-            <li class="score" v-for="score in scores1" v-bind:key="score.id">{{ score.score }}</li>
-        </ul>
+            <li class="score" v-for="score in scores3" v-bind:key="score.id">{{score.user}} {{ score.score }}
+                {{score.date}}</li>
+        </ol>
     </div>
 </template>
 
 <script>
     export default {
         name: "Scoreboard",
-        // props: {
-        //     scriptStyle: String,
-        // },
+
         data: function () {
             return {
                 scores1: [
-                    {id: 1, score: '100'},
-                    {id: 2, score: '99'},
-                    {id: 3, score: '98'},
-                    {id: 4, score: '97'}
+                    {id: 1, score: '', user: '', date: ''},
+                    {id: 2, score: '', user: '', date: ''},
+                    {id: 3, score: '', user: '', date: ''},
+                    {id: 4, score: '', user: '', date: ''},
+                    {id: 5, score: '', user: '', date: ''}
                 ],
                 scores2: [
-                    {id: 1, score: '100'},
-                    {id: 2, score: '99'},
-                    {id: 3, score: '98'},
-                    {id: 4, score: '97'}
+                    {id: 1, score: '', user: '', date: ''},
+                    {id: 2, score: '', user: '', date: ''},
+                    {id: 3, score: '', user: '', date: ''},
+                    {id: 4, score: '', user: '', date: ''},
+                    {id: 5, score: '', user: '', date: ''}
                 ],
                 scores3: [
-                    {id: 1, score: '100'},
-                    {id: 2, score: '99'},
-                    {id: 3, score: '98'},
-                    {id: 4, score: '97'}
-                ],
+                    {id: 1, score: '', user: '', date: ''},
+                    {id: 2, score: '', user: '', date: ''},
+                    {id: 3, score: '', user: '', date: ''},
+                    {id: 4, score: '', user: '', date: ''},
+                    {id: 5, score: '', user: '', date: ''}
+                ]
+            }
+        },
+        mounted() {
+            for (let i = 0; i < 3; i++) {
+                let input;
+                switch (i) {
+                    case 0:
+                        input = '10';
+                        break;
+                    case 1:
+                        input = '15';
+                        break;
+                    case 2:
+                        input = '20';
+                        break;
+                }
+                fetch('http://127.0.0.1:3000/api/scores/' + input)
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then((data) => {
+                        let highscoreArr = [];
+                        data.forEach(function (entry) {
+                            highscoreArr.push(entry)
+                        });
+                        let board;
+                        switch (i) {
+                            case 0:
+                                board = this.scores1;
+                                break;
+                            case 1:
+                                board = this.scores2;
+                                break;
+                            case 2:
+                                board = this.scores3;
+                                break;
+                        }
+                        console.log(highscoreArr);
+                        let id = 0;
+                        board.forEach(function (entry) {
+                            entry.score = highscoreArr[id].Score;
+                            entry.user = highscoreArr[id].user;
+                            entry.date = highscoreArr[id].datetime;
+                            id++;
+                        })
+                    })
             }
         }
     }
@@ -61,17 +112,27 @@
         /*border: 2px solid #656565;*/
     }
 
-    ul {
-        width: 247px;
-        margin: 0;
-        text-align: center;
+    /*ol {*/
+    /*    width: 247px;*/
+    /*    margin: 0;*/
+    /*    text-align: center;*/
+    /*    padding: 0;*/
+    /*    display: grid;*/
+    /*    grid-template-rows: 50px;*/
+    /*    !*grid-gap: 2px;*!*/
+    /*    list-style: none;*/
+    /*    border: 2px solid #656565;*/
+    /*    border-radius: 5px;*/
+
+    ol {
+        width: 250px;
+        /*margin: 2px;*/
+        margin-left: 20px;
+        text-align: left;
         padding: 0;
         display: grid;
-        grid-template-rows: 50px;
-        /*grid-gap: 2px;*/
-        list-style: none;
-        border: 2px solid #656565;
-        border-radius: 5px;
+        grid-template-rows: 60px;
+        grid-gap: 2px;
     }
 
     h3 {

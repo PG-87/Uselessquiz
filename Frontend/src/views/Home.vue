@@ -9,18 +9,19 @@
             highscore listan.</p>
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
-
         <Quiz :style="quiz.style"></Quiz>
+        <Scoreboard></Scoreboard>
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
-
+    import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
+            Scoreboard
         },
         data: function () {
             return {
@@ -33,20 +34,6 @@
                 this.home.style.display = 'none';
                 this.quiz.style.display = 'grid';
             }
-            // toggleHome: function () {
-            //     if (this.home.style.display === 'none') {
-            //         this.home.style.display = 'grid'
-            //     } else {
-            //         this.home.style.display = 'none'
-            //     }
-            // },
-            // toggleQuiz: function () {
-            //     if (this.quiz.style.display === 'none') {
-            //         this.quiz.style.display = 'initial'
-            //     } else {
-            //         this.quiz.style.display = 'none'
-            //     }
-            // }
         }
     }
 </script>
