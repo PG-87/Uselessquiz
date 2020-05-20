@@ -253,8 +253,8 @@
 
     .start {
         width: 150px;
-        background-color: #3498DB;
-        color: #2c3e50;
+        background-color: darkslateblue;
+        color: antiquewhite;
         font-weight: bolder;
         font-family: Arial, sans-serif;
         font-size: 20px;

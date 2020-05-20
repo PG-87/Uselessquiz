@@ -3,17 +3,39 @@
         <img class=logo alt="vue logo" src="./assets/logo.png">
         <div id="nav">
             <router-link to="/">Home</router-link>
-            <router-link to="/login">Logga in</router-link>
             <router-link to="/faq">FAQ</router-link>
             <router-link to="/kontaktaoss">Kontakta oss</router-link>
+            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
-            <router-view></router-view>
         </div>
+        <router-view @authenticated="setAuthenticated" />
 
     </div>
 </template>
 
 <script>
+    export default {
+        name: 'app',
+        data() {
+            return {
+                authenticated: false,
+
+            }
+        },
+        mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
+    }
 
 </script>
 
