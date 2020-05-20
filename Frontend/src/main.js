@@ -15,13 +15,20 @@ Vue.use(Router);
     const store = new Vuex.Store(
         {
             state: {
-                authenticated: false
+                authenticated: false,
+                username:"",
+                userId: 0
             },
             mutations: {
                 setAuthentication(state, status) {
                     state.authenticated = status;
+                },
+                setUserId(state, status) {
+                    state.userId = status;
                 }
-            }
+            },
+            getters: {},
+            actions: {}
         }
     );
 
