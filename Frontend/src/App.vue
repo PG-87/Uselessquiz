@@ -10,7 +10,7 @@
             <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>
-        <router-view @authenticated="setAuthenticated" />
+        <router-view @authenticated="setAuthenticated" @userId="setUserId" />
 
     </div>
 </template>
@@ -21,6 +21,8 @@
         data() {
             return {
                 authenticated: false,
+                userId: 0
+
             }
         },
         mounted() {
@@ -32,6 +34,11 @@
             setAuthenticated(status) {
                 this.authenticated = status;
                 console.log(this.authenticated)
+
+            },
+            setUserId(status){
+                this.userId = status;
+                console.log(this.userId)
             },
             logout() {
                 this.authenticated = false;

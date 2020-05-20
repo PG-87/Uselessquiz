@@ -37,6 +37,11 @@
                 name: "",}
             }
         },
+       /* props: function (){
+            return {
+                // question: String,
+                userId: 0
+            }},*/
         methods: {
             postData: async function () {
                 if(this.input.name !== "" && this.input.password !== ""){
@@ -51,10 +56,12 @@
                     const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
                     const data = await response.json();
                     console.log(data);
+                    console.log(data.userId)
 
                     if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
                         // await this.$router.replace({name: "mypage"});
+                        this.$emit("userId", this.data.userId)
                     }
                     else {
                         alert("The username and / or password is incorrect");
