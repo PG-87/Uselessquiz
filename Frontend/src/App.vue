@@ -5,7 +5,9 @@
             <router-link to="/">Home</router-link>
             <router-link to="/faq">FAQ</router-link>
             <router-link to="/kontaktaoss">Kontakta oss</router-link>
-            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logga ut</router-link>
+            <router-link v-if="!authenticated" to="/login" v-on:click.native="setAuthenticated()" replace>Logga in</router-link>
+            <router-link v-if="authenticated" to="/mypage" replace>My Page</router-link>
+            <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>
         <router-view @authenticated="setAuthenticated" />
@@ -19,20 +21,22 @@
         data() {
             return {
                 authenticated: false,
-
             }
         },
         mounted() {
             if(!this.authenticated) {
-                this.$router.replace({ name: "login" });
+                this.$router.replace({ name: "home" });
             }
         },
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
+                console.log(this.authenticated)
             },
             logout() {
                 this.authenticated = false;
+                console.log(this.authenticated);
+                this.$router.push({path: '/'})
             }
         }
     }

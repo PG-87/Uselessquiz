@@ -63,13 +63,13 @@ const router = new Router ({
             name: "mypage",
             component: () =>
                 import( "./views/Mypage.vue"),
-            beforeEnter: (to, from, next) => {
-                if (store.state.authenticated === false) {
-                    next(false);
-                } else {
-                    next();
-                }
-            }
+            // beforeEnter: (to, from, next) => {
+            //     if (store.state.authenticated === false) {
+            //         next(false);
+            //     } else {
+            //         next();
+            //     }
+            // }
         }
 
 

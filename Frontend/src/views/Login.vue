@@ -52,9 +52,9 @@
                     const data = await response.json();
                     console.log(data);
 
-                    if(response.data.status === true) {
+                    if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
-                        this.$router.replace({name: "mypage"});
+                        // await this.$router.replace({name: "mypage"});
                     }
                     else {
                         alert("The username and / or password is incorrect");
