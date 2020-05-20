@@ -1,5 +1,5 @@
 <template>
-    <div id="quiz">
+    <div id="quiz" :style="quiz.style">
         <Scoreboard id="scoreboard" v-bind:style="resultScreen.style"></Scoreboard>
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
@@ -54,6 +54,7 @@
                 ],
                 start: {lockButton: false, style: {display: 'inline'}},
                 next: {lockButton: false, style: {display: 'none'}},
+                quiz: {style: {backgroundColor: 'rgba(0,0,0,0)'}},
                 resultScreen: {style: {display: 'none'}},
                 result: {style: {display: 'none'}},
                 // section: {style: {display: 'none'}},
@@ -100,23 +101,6 @@
                         this.next.style.display = 'initial';
                         this.info.style.display = 'grid';
                         this.nextQuestion(0);
-
-                        // this.answers.forEach(function(entry){
-                        //     entry.locked = false;
-                        //     entry.correct = false;
-                        //     entry.style.backgroundColor = '#ffffff';
-                        // });
-                        //
-                        // this.question = data.question;
-                        // let answerArray = [data.correct_answer, data.incorrect_answer[0], data.incorrect_answer[1], data.incorrect_answer[2]];
-                        // answerArray.sort(() => Math.random() - 0.5);
-                        // this.answers.forEach(function (entry) {
-                        //     entry.answer = answerArray.pop();
-                        //     if (entry.answer === data.correct_answer) {
-                        //         entry.correct = true;
-                        //     }
-                        // });
-                        // console.log(this.answers)
                     })
             },
             nextQuestion: function (i) {
@@ -191,6 +175,7 @@
                 this.question = '';
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
+                this.quiz.style.backgroundColor = 'white'
             }
         }
     }
@@ -209,6 +194,8 @@
         grid-template-rows: minmax(150px, auto) auto auto 1fr;
         /*grid-template-rows: 150px auto auto 1fr;*/
         /*background-image: url("../assets/logo.png");*/
+        background-color: white;
+        /*min-height: 800px;*/
     }
 
     #question {
@@ -237,7 +224,8 @@
     }
 
     .answerButton:hover {
-        background-color: #444444;
+        /*background-color: #444444;*/
+        background-color: #2980B9;
     }
 
     #nextButton, #resultButton {
@@ -272,16 +260,17 @@
 
     li {
         list-style: none;
-        padding-right: 10px;
+        /*padding-right: 10px;*/
     }
 
     #startButton li {
         display: inline;
+        padding-right: 10px;
     }
 
     #startButton {
         position: absolute;
-        top: 300px;
+        top: 200px;
         left: 50px;
         right: 50px;
         /*background: #8DFCC3;*/
@@ -308,8 +297,14 @@
         margin-bottom: 25px;
     }
 
-    ul li hr {
-        margin-bottom: 25px;
+    /*ul li hr {*/
+    hr {
+        width: 100%;
+        margin-bottom: 27px;
+        margin-top: 0;
+        /*margin-right: 0;*/
+        /*margin-left: 0;*/
+        padding: 0;
         /*width: 750px;*/
     }
 

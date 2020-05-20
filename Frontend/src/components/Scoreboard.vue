@@ -134,8 +134,11 @@
         display: grid;
         /*grid-template-areas: 'score1' 'score2' 'score3';*/
         grid-template-columns: 250px 250px 250px;
-        grid-gap: 2px 23px;
+        grid-gap: 0 25px;
+        /*grid-gap: 2px 25px;*/
+        /*border: 2px solid #656565;*/
     }
+
 
     table {
         border-collapse: collapse;
@@ -157,7 +160,6 @@
     table caption {
         font-size: 21px;
     }
-
     /*table tr:nth-child(even){background-color: #f2f2f2;}*/
 
     table tr:hover {background-color: #ddd;}
