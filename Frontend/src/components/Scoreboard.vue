@@ -1,21 +1,44 @@
 <template>
     <div id="scoreboard">
-        <ol>
-            <h3>Highscore för 10 frågor</h3>
-            <li class="score" v-for="score in scores1" v-bind:key="score.id">{{score.user}} {{ score.score }}
-                {{score.date}}
-            </li>
-        </ol>
-        <ol>
-            <h3>Highscore för 15 frågor</h3>
-            <li class="score" v-for="score in scores2" v-bind:key="score.id">{{score.user}} {{ score.score }}
-                {{score.date}}</li>
-        </ol>
-        <ol>
-            <h3>Highscore för 20 frågor</h3>
-            <li class="score" v-for="score in scores3" v-bind:key="score.id">{{score.user}} {{ score.score }}
-                {{score.date}}</li>
-        </ol>
+        <table>
+            <caption>Highscore 10 Frågor!</caption>
+            <thead>
+            <tr>
+                <th v-for="(field, index) in fields" :key="index">{{field}}</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(score, index) in scores1" :key="index">
+                    <td v-for="(field, indexColumn) in fields" :key="indexColumn">{{score[field]}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <caption>Highscore 15 Frågor!</caption>
+            <thead>
+            <tr>
+                <th v-for="(field, index) in fields" :key="index">{{field}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(score, index) in scores2" :key="index">
+                <td v-for="(field, indexColumn) in fields" :key="indexColumn">{{score[field]}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <caption>Highscore 20 Frågor!</caption>
+            <thead>
+            <tr>
+                <th v-for="(field, index) in fields" :key="index">{{field}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(score, index) in scores3" :key="index">
+                <td v-for="(field, indexColumn) in fields" :key="indexColumn">{{score[field]}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -25,26 +48,29 @@
 
         data: function () {
             return {
+                fields: [
+                    "Score", 'User', 'Date'
+                ],
                 scores1: [
-                    {id: 1, score: '', user: '', date: ''},
-                    {id: 2, score: '', user: '', date: ''},
-                    {id: 3, score: '', user: '', date: ''},
-                    {id: 4, score: '', user: '', date: ''},
-                    {id: 5, score: '', user: '', date: ''}
+                    {id: 1, Score: '', User: '', date: ''},
+                    {id: 2, Score: '', User: '', date: ''},
+                    {id: 3, Score: '', User: '', date: ''},
+                    {id: 4, Score: '', User: '', date: ''},
+                    {id: 5, Score: '', User: '', date: ''}
                 ],
                 scores2: [
-                    {id: 1, score: '', user: '', date: ''},
-                    {id: 2, score: '', user: '', date: ''},
-                    {id: 3, score: '', user: '', date: ''},
-                    {id: 4, score: '', user: '', date: ''},
-                    {id: 5, score: '', user: '', date: ''}
+                    {id: 1, Score: '', User: '', date: ''},
+                    {id: 2, Score: '', User: '', date: ''},
+                    {id: 3, Score: '', User: '', date: ''},
+                    {id: 4, Score: '', User: '', date: ''},
+                    {id: 5, Score: '', User: '', date: ''}
                 ],
                 scores3: [
-                    {id: 1, score: '', user: '', date: ''},
-                    {id: 2, score: '', user: '', date: ''},
-                    {id: 3, score: '', user: '', date: ''},
-                    {id: 4, score: '', user: '', date: ''},
-                    {id: 5, score: '', user: '', date: ''}
+                    {id: 1, Score: '', User: '', date: ''},
+                    {id: 2, Score: '', User: '', date: ''},
+                    {id: 3, Score: '', User: '', date: ''},
+                    {id: 4, Score: '', User: '', date: ''},
+                    {id: 5, Score: '', User: '', date: ''}
                 ]
             }
         },
@@ -86,9 +112,9 @@
                         console.log(highscoreArr);
                         let id = 0;
                         board.forEach(function (entry) {
-                            entry.score = highscoreArr[id].Score;
-                            entry.user = highscoreArr[id].user;
-                            entry.date = highscoreArr[id].datetime;
+                            entry.Score = highscoreArr[id].Score;
+                            entry.User = highscoreArr[id].user;
+                            entry.Date = highscoreArr[id].datetime;
                             id++;
                         })
                     })
@@ -101,6 +127,7 @@
 
     #scoreboard {
         /*background-color: rgb(230,230,230);*/
+        overflow-x:auto;
         height: auto;
         width: 800px;
         margin: auto;
@@ -110,29 +137,28 @@
         grid-gap: 2px 23px;
     }
 
-    ol {
-        width: 250px;
-        /*margin: 2px;*/
-        margin-left: 20px;
-        text-align: left;
-        padding: 0;
-        display: grid;
-        grid-template-rows: 60px;
-        grid-gap: 2px;
+    table {
+        border-collapse: collapse;
+        background-color: white;
+        font-family: Calibri, sans-serif;
     }
 
-    h3 {
-        height: 60px;
-        font-size: 20px;
-        margin: 0;
-        /*background-color: white;*/
-        /*background-color: rgb(230,230,230);*/
+    table td, th {
+        /*border: 1px solid black;*/
+        padding: 3px;
+        width: 100px;
+    }
+    table th {
+        padding: 5px;
+        text-align: center;
+        background-color: darkslateblue;
+        color: white;
+    }
+    table caption {
+        font-size: 21px;
     }
 
-    li {
-        
-        /*background-color: white;*/
-        /*background-color: rgb(230,230,230);*/
-    }
+    /*table tr:nth-child(even){background-color: #f2f2f2;}*/
 
+    table tr:hover {background-color: #ddd;}
 </style>
