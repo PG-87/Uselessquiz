@@ -7,12 +7,12 @@
 
             <div class="login-form">
                 <div class="control-group">
-                    <input v-model="name" type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
+                    <input v-model="input.name" type="text" class="login-field" value="" placeholder="användarnamn" id="login-name">
                     <label class="login-field-icon fui-user" for="login-name"></label>
                 </div>
 
                 <div class="control-group">
-                    <input v-model="password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
+                    <input v-model="input.password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
 
@@ -32,42 +32,40 @@
     export default {
         data: function () {
             return {
-                email: "",
+                input:{
                 password: "",
-                name: "",
-                RegEmail: "",
-                RegPassword: "",
-                RegName: "",
+                name: "",}
             }
-
         },
         methods: {
             postData: async function () {
+                if(this.input.name !== "" && this.input.password !== ""){
                 // POST request using fetch with async/await
-                const requestOptions = {
+                    const requestOptions = {
                     method: "POST",
+
                     mode: 'cors',
                     headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({user: this.name, pass: this.password})
-                };
-                const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
-                const data = await response.json();
-                console.log(data)
+                    body: JSON.stringify({user: this.input.name, pass: this.input.password})
+                    };
+                    const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
+                    const data = await response.json();
+                    console.log(data);
+
+                    if(data.user === this.input.name) {
+                        this.$emit("authenticated", true);
+                        // await this.$router.replace({name: "mypage"});
+                    }
+                    else {
+                        alert("The username and / or password is incorrect");
+
+                    } }
+                else {
+                    alert("A username and password must be present");
+                }
+
             },
-            putData: async function () {
-                // POST request using fetch with async/await
-                const requestOptions = {
-                    method: "PUT",
-                    mode: 'cors',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({user: this.RegName, pass: this.RegPassword, email: this.RegEmail})
-                };
-                const response = await fetch("http://127.0.0.1:3000/api/new_user", requestOptions);
-                const data = await response.json();
-                console.log(data)
 
-
-            }
         }
 
     }
