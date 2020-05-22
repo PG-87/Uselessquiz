@@ -68,7 +68,7 @@ app.put("/api/new_user", (req, res, next) => {
 
         }else{
             insert = "INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)"
-            db.run(insert,[req.body.user,req.body.pass,txtdata])
+            db.run(insert,[req.body.user,req.body.pass,txtdata[0]])
             sql = "select userid from USERS where userEMAIL = ?"
             params = [txtdata]
             db.all(sql, params, (err2,rows2) => {
