@@ -110,23 +110,29 @@ app.get("/api/scores/:number", (req, res, next) => {
             res.json(rows);
         });
 })
+app.get("/api/scores/:number/:id", (req, res, next) => {
+    var sql = "SELECT USERS.user,Scoreboard.score as Score,Scoreboard.datetime,Scoreboard.question_amout " +
+        "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId " +
+        "WHERE Scoreboard.question_amout ="+ req.params.number +" AND USERS.userId ="+ req.params.id +" " +
+        "ORDER BY Score DESC LIMIT 5; "
+    db.all(sql,(err, rows) => {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json(rows);
+    });
+})
 app.put("/api/addscore", (req, res, next) => {
     var txt ={
         userId:req.body.userid,
         score:req.body.score,
         questionAmout:req.body.question_amout
     }
-    //db.all(sql, (err, rows) => {
         var date=new Date();
-      //  if (err) {
-          //  res.status(400).json({"error":err.message});
-           // return;
-        //}else{
             insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amout) VALUES(?,?,?,?)"
             db.run(insert,[req.body.userid,req.body.score,date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(),req.body.question_amout])
             res.status(200).json({"Message":"ok"});
-      //  }
-    //});
 })
 //</editor-fold>
 
