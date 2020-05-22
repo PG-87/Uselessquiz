@@ -2,7 +2,7 @@
     <div id="mypage">
         <h1>Secure Area</h1>
         <p>
-            This is users page {{this.$parent.userId}}
+            This is users page {{this.$parent.user.user}}
         </p>
     </div>
 </template>
@@ -12,6 +12,9 @@
         name: 'mypage',
         data() {
             return {};
+        },
+        mounted(){
+
         }
     }
 </script>

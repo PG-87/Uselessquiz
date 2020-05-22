@@ -17,14 +17,14 @@ Vue.use(Router);
             state: {
                 authenticated: false,
                 username:"",
-                userId: 0
+                user: 0
             },
             mutations: {
                 setAuthentication(state, status) {
                     state.authenticated = status;
                 },
                 setUserId(state,id) {
-                    state.userId = id;
+                    state.user = id;
                 }
             },
             getters: {},
