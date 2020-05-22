@@ -55,12 +55,13 @@
                     const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
                     const data = await response.json();
                     console.log(data);
-                    console.log(data.userId)
+                    //console.log(data.userId)
 
                     if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
+                        this.$emit("userId", data.userId)
                         await this.$router.replace({name: "mypage"});
-                        this.$emit("userId", this.data.userId)
+
                     }
                     else {
                         alert("The username and / or password is incorrect");

@@ -2,7 +2,7 @@
     <div id="mypage">
         <h1>Secure Area</h1>
         <p>
-            This is users page
+            This is users page {{this.$parent.userId}}
         </p>
     </div>
 </template>

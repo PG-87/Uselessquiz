@@ -16,12 +16,13 @@
 </template>
 
 <script>
+
     export default {
         name: 'app',
         data() {
             return {
                 authenticated: false,
-                userId: 0
+                userId: null
 
             }
         },
@@ -29,20 +30,22 @@
             if(!this.authenticated) {
                 this.$router.replace({ name: "home" });
             }
+            // if(!this.userId==0){
+            //     alert(this.userId)
+            // }
         },
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
-                console.log(this.authenticated)
-
             },
-            setUserId(status){
-                this.userId = status;
+            setUserId(id){
+                this.userId = id;
                 console.log(this.userId)
             },
             logout() {
                 this.authenticated = false;
                 console.log(this.authenticated);
+                this.setUserId(null)
                 this.$router.push({path: '/'})
             }
         }
