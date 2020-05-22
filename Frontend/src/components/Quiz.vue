@@ -42,7 +42,8 @@
         props: {
             // question: String,
             toggleShow: String,
-            correct: Boolean
+            correct: Boolean,
+            user: Object,
         },
         data: function () {
             return {
@@ -148,10 +149,6 @@
                     entry.locked = true
                 });
 
-                //result
-                // console.log(q);
-                // console.log(corrAns);
-                // console.log(yourAns);
                 this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns});
 
 
@@ -160,12 +157,10 @@
                 } else if (this.questionNumber >= this.questions.length) {
                     this.result.style.display = 'initial'
                 }
-                // if (this.questionNumber <= this.questions.length) {
-                //     console.log('next');
-                //     this.next.style.display = 'none'
-                // }
+
             },
             showResult: function () {
+              this.putResult();
                 console.log(this.resultArr);
                 this.answers.forEach(function (entry) {
                     entry.style.display = 'none'
@@ -176,6 +171,16 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white'
+            },
+            putResult: function(){
+                const requestOptions = {
+                    method: "PUT",
+                    mode: 'cors',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
+                };
+                console.log(requestOptions)
+                fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             }
         }
     }

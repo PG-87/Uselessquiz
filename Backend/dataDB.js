@@ -1,6 +1,6 @@
 var sqlite3 = require('sqlite3').verbose()
 
-const DBSOURCE = "userDB.db"
+const DBSOURCE = "user.db"
 
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
@@ -30,13 +30,13 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         })
         db.run('CREATE TABLE Scoreboard (' +
             'id INTEGER PRIMARY KEY,' +
-            'userId INTEGER,score TEXT,' +
-            'datetime TEXT,question_amout TEXT)',(err) => {
+            'userId TEXT,score INTEGER,' +
+            'datetime TEXT,question_amount TEXT)',(err) => {
             if (err) {
                 // Table already created
             }else {
                 // Table just created, creating some rows
-                var insert2 = 'INSERT INTO Scoreboard (userId,score,datetime,question_amout) VALUES(?,?,?,?)'
+                var insert2 = 'INSERT INTO Scoreboard (userId,score,datetime,question_amount) VALUES(?,?,?,?)'
                 db.run(insert2, ["1", "10", "2020-01-01","15"])
                 db.run(insert2, ["2", "20", "2020-01-01","20"])
                 db.run(insert2, ["3", "30", "2020-01-01","10"])

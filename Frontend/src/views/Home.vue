@@ -7,32 +7,39 @@
             vet mest". Vi inbjuder dig att ha kul nu!</p>
         <p>Tryck på en av knapparna nedan för att starta ett quiz, eller logga in om du vill ha en chans att komma med på
             highscore listan.</p>
+
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
-        <Quiz :style="quiz.style"></Quiz>
-        <!--Scoreboard></Scoreboard-->
+        <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
+        <Scoreboard></Scoreboard>
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
- //   import Scoreboard from "../components/Scoreboard";
+    import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
-          //  Scoreboard
+           Scoreboard
         },
         data: function () {
             return {
                 home: {style: {display: 'initial'}},
-                quiz: {style: {display: 'none'}}
+                quiz: {style: {display: 'none'}},
+              //  user: Object
             }
+        },
+        props:{
+
         },
         methods: {
             togglePage: function () {
                 this.home.style.display = 'none';
                 this.quiz.style.display = 'grid';
+               // this.user=native.user
+                //console.log(this.user)
             }
         }
     }

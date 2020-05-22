@@ -97,8 +97,8 @@ app.post("/api/users/login", (req, res, next) => {
 
 //<editor-fold desc="Scoreboard handle">
 app.get("/api/scores/:number", (req, res, next) => {
-        var sql = "SELECT USERS.user,MAX(Scoreboard.score) as Score,Scoreboard.datetime,Scoreboard.question_amout " +
-            "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId WHERE Scoreboard.question_amout ="+ req.params.number +" "+
+        var sql = "SELECT USERS.user,MAX(CAST(Scoreboard.score as INTEGER)) as Score,Scoreboard.datetime,Scoreboard.question_amount " +
+            "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId WHERE Scoreboard.question_amount ="+ req.params.number +" "+
             "GROUP BY USERS.user " +
             "ORDER BY Scoreboard.score DESC " +
             "LIMIT 5; "
@@ -111,9 +111,9 @@ app.get("/api/scores/:number", (req, res, next) => {
         });
 })
 app.get("/api/scores/:number/:id", (req, res, next) => {
-    var sql = "SELECT USERS.user,Scoreboard.score as Score,Scoreboard.datetime,Scoreboard.question_amout " +
+    var sql = "SELECT USERS.user,Scoreboard.score as Score,Scoreboard.datetime,Scoreboard.question_amount " +
         "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId " +
-        "WHERE Scoreboard.question_amout ="+ req.params.number +" AND USERS.userId ="+ req.params.id +" " +
+        "WHERE Scoreboard.question_amount ="+ req.params.number +" AND USERS.userId ="+ req.params.id +" " +
         "ORDER BY Score DESC LIMIT 5; "
     db.all(sql,(err, rows) => {
         if (err) {
@@ -127,11 +127,11 @@ app.put("/api/addscore", (req, res, next) => {
     var txt ={
         userId:req.body.userid,
         score:req.body.score,
-        questionAmout:req.body.question_amout
+        questionAmount:req.body.question_amount
     }
         var date=new Date();
-            insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amout) VALUES(?,?,?,?)"
-            db.run(insert,[req.body.userid,req.body.score,date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(),req.body.question_amout])
+            insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amount) VALUES(?,?,?,?)"
+            db.run(insert,[req.body.userId,req.body.score,date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(),req.body.questionAmount])
             res.status(200).json({"Message":"ok"});
 })
 //</editor-fold>
