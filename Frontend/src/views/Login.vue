@@ -59,7 +59,7 @@
 
                     if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
-                        this.$emit("userId", data.userId)
+                        this.$emit("user", data)
                         await this.$router.replace({name: "mypage"});
 
                     }

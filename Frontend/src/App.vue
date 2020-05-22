@@ -10,7 +10,7 @@
             <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>
-        <router-view @authenticated="setAuthenticated" @userId="setUserId" />
+        <router-view @authenticated="setAuthenticated" @user="setUser" />
 
     </div>
 </template>
@@ -22,7 +22,7 @@
         data() {
             return {
                 authenticated: false,
-                userId: null
+                user: null
 
             }
         },
@@ -30,22 +30,19 @@
             if(!this.authenticated) {
                 this.$router.replace({ name: "home" });
             }
-            // if(!this.userId==0){
-            //     alert(this.userId)
-            // }
         },
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
             },
-            setUserId(id){
-                this.userId = id;
-                console.log(this.userId)
+            setUser(id){
+                this.user = id;
+                console.log(this.user)
             },
             logout() {
                 this.authenticated = false;
                 console.log(this.authenticated);
-                this.setUserId(null)
+                this.setUser(null)
                 this.$router.push({path: '/'})
             }
         }
