@@ -23,8 +23,8 @@ Vue.use(Router);
                 setAuthentication(state, status) {
                     state.authenticated = status;
                 },
-                setUserId(state, status) {
-                    state.userId = status;
+                setUserId(state,id) {
+                    state.userId = id;
                 }
             },
             getters: {},
