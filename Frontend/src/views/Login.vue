@@ -48,7 +48,6 @@
                 // POST request using fetch with async/await
                     const requestOptions = {
                     method: "POST",
-
                     mode: 'cors',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({user: this.input.name, pass: this.input.password})
@@ -60,7 +59,7 @@
 
                     if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
-                        // await this.$router.replace({name: "mypage"});
+                        await this.$router.replace({name: "mypage"});
                         this.$emit("userId", this.data.userId)
                     }
                     else {

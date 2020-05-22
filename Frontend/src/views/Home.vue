@@ -10,18 +10,18 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
         <Quiz :style="quiz.style"></Quiz>
-        <Scoreboard></Scoreboard>
+        <!--Scoreboard></Scoreboard-->
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
-    import Scoreboard from "../components/Scoreboard";
+ //   import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
-            Scoreboard
+          //  Scoreboard
         },
         data: function () {
             return {
