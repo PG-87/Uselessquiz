@@ -131,7 +131,7 @@ app.put("/api/addscore", (req, res, next) => {
     }
         var date=new Date();
             insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amount) VALUES(?,?,?,?)"
-            db.run(insert,[req.body.userId,req.body.score,date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay(),req.body.questionAmount])
+            db.run(insert,[req.body.userId,req.body.score,date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate(),req.body.questionAmount])
             res.status(200).json({"Message":"ok"});
 })
 //</editor-fold>
