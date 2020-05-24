@@ -11,18 +11,18 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
         <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
-        <Scoreboard></Scoreboard>
+<!--        <Scoreboard></Scoreboard>-->
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
-    import Scoreboard from "../components/Scoreboard";
+    // import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
-           Scoreboard
+           // Scoreboard
         },
         data: function () {
             return {
@@ -36,6 +36,9 @@
         },
         methods: {
             togglePage: function () {
+                if(this.$parent.user==null){
+                    alert("Observera att ditt resultat inte sparas\n om du inte är inloggad!!")
+                }
                 this.home.style.display = 'none';
                 this.quiz.style.display = 'grid';
                // this.user=native.user
