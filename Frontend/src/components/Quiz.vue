@@ -5,7 +5,6 @@
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }}</li>
-<!--            <li><hr></li>-->
         </ul>
 
         <h1 id="question">{{ question }}</h1>
@@ -17,7 +16,7 @@
                     v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
                 answer.answer }}
             </button>
-            <p id="score">Score: {{ scoreSum }}/{{questions.length * 30}}</p>
+            <p id="score">Score: {{ scoreSum }}/{{questions.length * 20}}</p>
             <p id="round">Fråga: {{ questionNumber }}/{{questions.length}}</p>
         </section>
         <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
@@ -44,7 +43,6 @@
             Timer
         },
         props: {
-            // question: String,
             toggleShow: String,
             correct: Boolean,
             user: Object,
@@ -62,7 +60,6 @@
                 quiz: {style: {backgroundColor: 'rgba(0,0,0,0)'}},
                 resultScreen: {style: {display: 'none'}},
                 result: {style: {display: 'none'}},
-                // section: {style: {display: 'none'}},
                 info: {style: {display: 'none'}},
                 newGameLock: false,
                 questionNumber: 0,
@@ -95,11 +92,9 @@
                     .then((data) => {
                         let q = this.questions;
                         data.forEach(function (entry) {
-                            // console.log(entry);
                             q.push(entry);
                         });
                         this.q = q;
-                        // console.log(this.questions);
                         this.newGameLock = true;
                         this.start.style.display = 'none';
                         this.answers.forEach(function (entry) {
@@ -139,16 +134,13 @@
                     q = this.question,
                     corrAns = this.questions[this.questionNumber - 1].correct_answer,
                     yourAns = this.answers[i].answer;
-                // console.log(this.answers[i].correct);
                 if (this.answers[i].correct === true) {
-                    // this.answers[i].style.backgroundColor = '#32C832';
                     this.answers[i].style.backgroundColor = '#60BF6B';
                     this.scoreSum += this.$refs.timer.points;
                 } else {
                     this.answers[i].style.backgroundColor = '#ff3636';
                     this.answers.forEach(function (entry) {
                         if (entry.correct === true) {
-                            // entry.style.backgroundColor = '#32C832';
                             entry.style.backgroundColor = '#60BF6B';
                         }
                     })
@@ -189,9 +181,6 @@
                 console.log(requestOptions)
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             }
-        },
-        mounted() {
-            // this.startTimer();
         }
     }
 </script>
@@ -199,18 +188,12 @@
 <style scoped>
 
     #quiz {
-        /*background-color: rgb(230,230,230);*/
         height: auto;
         width: 800px;
         margin: auto;
         display: grid;
-        /*grid-template-areas: "question" "next" "answers";*/
-        /*grid-template-rows: 150px 250px auto 1fr;*/
         grid-template-rows: minmax(150px, auto) auto auto 1fr;
-        /*grid-template-rows: 150px auto auto 1fr;*/
-        /*background-image: url("../assets/logo.png");*/
         background-color: white;
-        /*min-height: 800px;*/
     }
 
     #question {
@@ -245,19 +228,16 @@
     }
 
     .answerButton:hover {
-        /*background-color: #444444;*/
         background-color: #2980B9;
     }
 
     #nextButton, #resultButton {
         width: 200px;
-        /*background-color: white;*/
         background-color: #3498DB;
         color: white;
         font-size: 25px;
         font-style: italic;
         position: relative;
-
     }
 
     .start {
@@ -267,7 +247,6 @@
         font-weight: bolder;
         font-family: Arial, sans-serif;
         font-size: 20px;
-        /*font-style: italic;*/
         position: relative;
     }
 
@@ -281,7 +260,6 @@
 
     li {
         list-style: none;
-        /*padding-right: 10px;*/
     }
 
     #startButton li {
@@ -294,8 +272,6 @@
         top: 200px;
         left: 50px;
         right: 50px;
-        /*background: #8DFCC3;*/
-        /*background: rgba(50,200,50,0.5);*/
     }
 
     p {
@@ -313,26 +289,20 @@
     }
 
     #scoreboard {
-        /*background-color: #3498DB;*/
         height: auto;
         margin-bottom: 25px;
     }
 
-    /*ul li hr {*/
     hr {
         width: 100%;
         margin-bottom: 27px;
         margin-top: 0;
-        /*margin-right: 0;*/
-        /*margin-left: 0;*/
         padding: 0;
-        /*width: 750px;*/
     }
 
     #result {
         margin-top: 0;
         padding-left: 0;
-        /*background-color: #3498DB;*/
     }
 
     #result li {
