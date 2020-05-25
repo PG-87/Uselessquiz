@@ -7,13 +7,17 @@
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }}</li>
 <!--            <li><hr></li>-->
         </ul>
+
         <h1 id="question">{{ question }}</h1>
+        <timer id="timer" ref="timer" :points="this.points"/>
+
         <section v-bind:style="info.style">
+
             <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style"
                     v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
                 answer.answer }}
             </button>
-            <p id="score">Score: {{ scoreSum }}/{{questions.length}}</p>
+            <p id="score">Score: {{ scoreSum }}/{{questions.length * 30}}</p>
             <p id="round">Fråga: {{ questionNumber }}/{{questions.length}}</p>
         </section>
         <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
@@ -25,19 +29,19 @@
             <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock>20 Frågor</button></li>
         </ul>
         <button id="resultButton" @click="showResult()" :style="result.style">Resultat</button>
-        <!--        <timer></timer>-->
+
     </div>
 </template>
 
 <script>
-    // import Timer from "./Timer";
+    import Timer from "./Timer";
 
     import Scoreboard from "./Scoreboard";
     export default {
         name: "Quiz",
         components: {
-            Scoreboard
-            // Timer
+            Scoreboard,
+            Timer
         },
         props: {
             // question: String,
@@ -65,7 +69,9 @@
                 questions: [],
                 resultArr: [],
                 question: '',
-                scoreSum: 0
+                scoreSum: 0,
+                points: 0
+
             }
         },
         methods: {
@@ -110,9 +116,7 @@
                     entry.correct = false;
                     entry.style.backgroundColor = '#3498DB';
                 });
-
                 this.next.style.display = 'none';
-
                 this.question = this.questions[i].question;
                 let correctAnswer = this.questions[i].correct_answer;
                 let answerArray = [this.questions[i].correct_answer, this.questions[i].incorrect_answer[0], this.questions[i].incorrect_answer[1], this.questions[i].incorrect_answer[2]];
@@ -124,9 +128,13 @@
                     }
                 });
                 console.log(this.answers);
-                this.questionNumber += 1
+                this.questionNumber += 1;
+                this.$refs.timer.resetTimer();
+                this.$refs.timer.startTimer();
+
             },
             checkAnswer: function (id) {
+                this.$refs.timer.stopTimer();
                 let i = id - 1,
                     q = this.question,
                     corrAns = this.questions[this.questionNumber - 1].correct_answer,
@@ -135,7 +143,7 @@
                 if (this.answers[i].correct === true) {
                     // this.answers[i].style.backgroundColor = '#32C832';
                     this.answers[i].style.backgroundColor = '#60BF6B';
-                    this.scoreSum += 1
+                    this.scoreSum += this.$refs.timer.points;
                 } else {
                     this.answers[i].style.backgroundColor = '#ff3636';
                     this.answers.forEach(function (entry) {
@@ -150,7 +158,6 @@
                 });
 
                 this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns});
-
 
                 if (this.questionNumber < this.questions.length) {
                     this.next.style.display = 'initial';
@@ -182,6 +189,9 @@
                 console.log(requestOptions)
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             }
+        },
+        mounted() {
+            // this.startTimer();
         }
     }
 </script>
@@ -207,6 +217,12 @@
         text-align: center;
         margin: auto 20px;
         color: #2c3e50;
+    }
+
+    #timer {
+        position: relative;
+        justify-self: center;
+        margin-bottom: 15px;
     }
 
     section {
