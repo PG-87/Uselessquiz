@@ -8,7 +8,7 @@
         </ul>
 
         <h1 id="question">{{ question }}</h1>
-        <timer id="timer" ref="timer" :points="this.points"/>
+        <timer id="timer" ref="timer" :style="info.style" :points="this.points"/>
 
         <section v-bind:style="info.style">
 
@@ -158,8 +158,21 @@
                 }
 
             },
+            putResult: function(){
+                const requestOptions = {
+                    method: "PUT",
+                    mode: 'cors',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
+                };
+                console.log(requestOptions)
+                fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
+            },
             showResult: function () {
-              this.putResult();
+
+                if(!this.user==null) {
+                    this.putResult();
+                }
                 console.log(this.resultArr);
                 this.answers.forEach(function (entry) {
                     entry.style.display = 'none'
@@ -170,16 +183,8 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white'
-            },
-            putResult: function(){
-                const requestOptions = {
-                    method: "PUT",
-                    mode: 'cors',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
-                };
-                console.log(requestOptions)
-                fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
+                this.$refs.timer.resetTimer();
+
             }
         }
     }
