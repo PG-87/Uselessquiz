@@ -170,7 +170,7 @@
             },
             showResult: function () {
 
-                if(!this.user==null) {
+                if(!(this.user==null)) {
                     this.putResult();
                 }
                 console.log(this.resultArr);

@@ -403,6 +403,57 @@
         "Gud",
         "Lensman"
       ]
+    },
+    {
+      "id": 41,
+      "question": "Hur många år tillbringar människor av sitt liv i kö?",
+      "correct_answer": "5 år",
+      "incorrect_answer": [
+        "7",
+        "4",
+        "3"
+      ]
+    },
+    {
+      "id": 42,
+      "question": "Hur lång tid tar för den mänskliga kroppen att återskapa en liter blod?",
+      "correct_answer": "två veckor ",
+      "incorrect_answer": [
+        "5 dagar",
+        "1 Vecka",
+        "1 månad"
+      ]
+    },
+    {
+      "id": 43,
+      "question": "I vilket land finns det fler bilar än människor?",
+      "correct_answer": "USA",
+      "incorrect_answer": [
+        "Kina",
+        "Indien",
+        "England"
+      ]
+    },
+    {
+      "id": 44,
+      "question": "Vad hade inte Henry Ford?",
+      "correct_answer": "Körkort",
+      "incorrect_answer": [
+        "Häst",
+        "Egen bil",
+        "konkurenter"
+      ]
+    },
+    {
+      "id": 45,
+      "question": "Bara en bok har tryckts i fler exemplar än bibeln, vilken?",
+      "correct_answer": "IKEA-katalogen.",
+      "incorrect_answer": [
+        "Biltema-katalogen",
+        "Sveriges lagbok",
+        "Engelska ordboken"
+      ]
     }
+
   ]
 }
