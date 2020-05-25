@@ -1,7 +1,7 @@
 git .DS_Store
 /Backend/node_modules
 /Frontend/node_modules
-/Backend/userDB.db
+/Backend/user.db
 /dist
 
 
