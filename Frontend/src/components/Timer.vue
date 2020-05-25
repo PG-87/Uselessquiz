@@ -1,6 +1,6 @@
 <template>
     <div class="base-timer">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg class="base-timer__svg" viewBox="0 0 100 100" >
             <g class="base-timer__circle">
                 <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
                 <path
@@ -27,7 +27,7 @@
 
     const COLOR_CODES = {
         info: {
-            color: "green"
+            color: 'green'
         },
         warning: {
             color: "orange",
@@ -39,7 +39,7 @@
         }
     };
 
-    var timeLimit = 30;
+    var timeLimit = 20;
 
     export default {
         data() {
@@ -97,20 +97,16 @@
             }
         },
 
-        // mounted() {
-        //     this.startTimer();
-        // },
-
         methods: {
             onTimesUp() {
                 clearInterval(this.timerInterval);
             },
             stopTimer() {
-              this.points = (timeLimit - this.timePassed) - 0.5
+              this.points = (timeLimit - this.timePassed) - 1
             },
             startTimer() {
                 this.points = 0;
-                this.timerInterval = setInterval(() => (this.timePassed += 0.5), 500);
+                this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
             },
             resetTimer(){
                 this.timePassed = 0;
@@ -122,26 +118,31 @@
 <style scoped lang="scss">
     .base-timer {
         position: relative;
-        width: 300px;
-        height: 300px;
+        width: 150px;
+        height: 150px;
+
+
 
         &__svg {
             transform: scaleX(-1);
+            border-radius: 50%;
         }
 
         &__circle {
             fill: none;
             stroke: none;
+
+
         }
 
         &__path-elapsed {
-            stroke-width: 7px;
-            stroke: grey;
+            stroke-width: 90px;
+            stroke: #2c3e50;
         }
 
         &__path-remaining {
-            stroke-width: 7px;
-            stroke-linecap: round;
+            stroke-width: 90px;
+            stroke-linecap: butt;
             transform: rotate(90deg);
             transform-origin: center;
             transition: 1s linear all;
@@ -163,13 +164,14 @@
 
         &__label {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 150px;
+            height: 150px;
             top: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 38px;
+            color: white;
         }
     }
 </style>
