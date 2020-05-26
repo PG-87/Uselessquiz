@@ -23,19 +23,19 @@ app.listen(HTTP_PORT, () => {
 //<editor-fold desc="Questions handle">
 app.get("/api/questions", (req, res, next) => {
     let rnd=Math.floor(Math.random() * quizdb.questions.length);
-    res.json(quizdb.questions[rnd])
+    res.json(quizdb.questions[rnd]);
 
 });
 app.get("/api/questions/:id", (req, res, next) => {
    //console.log(quizdb.questions[req.params.id-1].correct_answer);
-    res.json(quizdb.questions[req.params.id-1])
+    res.json(quizdb.questions[req.params.id-1]);
 });
 app.get("/api/questions/range/:number", (req, res, next) => {
     let numberArry = [];
     while (numberArry.length < req.params.number) {
         let rndnumber = Math.floor(Math.random() * quizdb.questions.length);
         if (!numberArry.includes(quizdb.questions[rndnumber])) {
-        numberArry.push(quizdb.questions[rndnumber])
+        numberArry.push(quizdb.questions[rndnumber]);
         }
     }
     res.json(numberArry)
@@ -50,12 +50,12 @@ app.put("/api/new_user", (req, res, next) => {
             pass:req.body.pass,
             email:req.body.email
     }
-    var txtdata=req.body.email.toString()
-    txtdata=txtdata.toLowerCase()
-    txtdata=[txtdata]
-    txtdata.push(req.body.user.toString())
-    var sql = "select userid from USERS where userEMAIL = ? OR user = ?"
-    var params = txtdata
+    var txtdata=req.body.email.toString();
+    txtdata=txtdata.toLowerCase();
+    txtdata=[txtdata];
+    txtdata.push(req.body.user.toString());
+    var sql = "select userid from USERS where userEMAIL = ? OR user = ?";
+    var params = txtdata;
     db.all(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({"error": err.message});
@@ -67,10 +67,10 @@ app.put("/api/new_user", (req, res, next) => {
             })
 
         }else{
-            insert = "INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)"
-            db.run(insert,[req.body.user,req.body.pass,txtdata[0]])
-            sql = "select userid from USERS where userEMAIL = ?"
-            params = [txtdata]
+            insert = "INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)";
+            db.run(insert,[req.body.user,req.body.pass,txtdata[0]]);
+            sql = "select userid from USERS where userEMAIL = ?";
+            params = [txtdata];
             db.all(sql, params, (err2,rows2) => {
                 res.json(rows2);
             });
@@ -78,11 +78,8 @@ app.put("/api/new_user", (req, res, next) => {
         }
     });
 });
+
 app.post("/api/users/login", (req, res, next) => {
-    var data ={
-        pass:req.body.pass,
-        user:req.body.user
-    }
     var sql = "select userId,user,userEMAIL from USERS WHERE passCode = ? AND user = ?";
     var params = [req.body.pass,req.body.user];
      db.get(sql, params, (err, rows) => {
@@ -90,7 +87,8 @@ app.post("/api/users/login", (req, res, next) => {
             res.status(400).json({"error":err.message});
             return;
         }
-        res.json(rows);
+        // res.json(rows);
+        console.log(res.json(rows))
     });
 });
 //</editor-fold>
@@ -101,7 +99,7 @@ app.get("/api/scores/:number", (req, res, next) => {
             "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId WHERE Scoreboard.question_amount ="+ req.params.number +" "+
             "GROUP BY USERS.user " +
             "ORDER BY Scoreboard.score DESC " +
-            "LIMIT 5; "
+            "LIMIT 5; ";
         db.all(sql,(err, rows) => {
             if (err) {
                 res.status(400).json({"error":err.message});
@@ -109,12 +107,13 @@ app.get("/api/scores/:number", (req, res, next) => {
             }
             res.json(rows);
         });
-})
+});
+
 app.get("/api/scores/:number/:id", (req, res, next) => {
     var sql = "SELECT USERS.user,Scoreboard.score as Score,Scoreboard.datetime,Scoreboard.question_amount " +
         "FROM Scoreboard JOIN USERS ON Scoreboard.userId=USERS.userId " +
         "WHERE Scoreboard.question_amount ="+ req.params.number +" AND USERS.userId ="+ req.params.id +" " +
-        "ORDER BY Score DESC LIMIT 5; "
+        "ORDER BY Score DESC LIMIT 5; ";
     db.all(sql,(err, rows) => {
         if (err) {
             res.status(400).json({"error":err.message});
@@ -122,18 +121,15 @@ app.get("/api/scores/:number/:id", (req, res, next) => {
         }
         res.json(rows);
     });
-})
+});
+
 app.put("/api/addscore", (req, res, next) => {
-    var txt ={
-        userId:req.body.userid,
-        score:req.body.score,
-        questionAmount:req.body.question_amount
-    }
+
         var date=new Date();
-            insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amount) VALUES(?,?,?,?)"
-            db.run(insert,[req.body.userId,req.body.score,date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),req.body.questionAmount])
+            insert = "INSERT INTO Scoreboard (userId,score,datetime,question_amount) VALUES(?,?,?,?)";
+            db.run(insert,[req.body.userId,req.body.score,date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate(),req.body.questionAmount]);
             res.status(200).json({"Message":"ok"});
-})
+});
 //</editor-fold>
 
 

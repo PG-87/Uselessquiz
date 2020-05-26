@@ -59,11 +59,9 @@
                 const timeLeft = this.timeLeft;
                 const minutes = Math.floor(timeLeft / 60);
                 let seconds = timeLeft % 60;
-
                 if (seconds < 10) {
                     seconds = `0${seconds}`;
                 }
-
                 return `${minutes}:${seconds}`;
             },
 
@@ -129,8 +127,6 @@
         &__circle {
             fill: none;
             stroke: none;
-
-
         }
 
         &__path-elapsed {

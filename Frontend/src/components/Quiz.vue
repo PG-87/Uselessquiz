@@ -107,8 +107,6 @@
                     })
             },
             nextQuestion: function (i) {
-                this.$refs.timer.resetTimer();
-                this.$refs.timer.startTimer();
                 this.answers.forEach(function (entry) {
                     entry.locked = false;
                     entry.correct = false;
@@ -128,7 +126,6 @@
                // console.log(this.answers);
                 this.questionNumber += 1;
                 this.$refs.timer.startTimer();
-
             },
             checkAnswer: function (id) {
                 this.$refs.timer.stopTimer();

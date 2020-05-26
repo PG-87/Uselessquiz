@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="control-group">
-                    <input v-model="input.password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass">
+                    <input v-model="input.password" type="password" class="login-field" value="" placeholder="lösenord" id="login-pass" @keyup.enter="postData">
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
 
@@ -55,17 +55,15 @@
                     const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
                     const data = await response.json();
                     console.log(data);
-                    //console.log(data.userId)
 
+                    //console.log(data.userId)
                     if(data.user === this.input.name) {
                         this.$emit("authenticated", true);
-                        this.$emit("user", data)
+                        this.$emit("user", data);
                         await this.$router.replace({name: "mypage"});
-
                     }
-                    else {
+                    else  {
                         alert("The username and / or password is incorrect");
-
                     } }
                 else {
                     alert("A username and password must be present");
