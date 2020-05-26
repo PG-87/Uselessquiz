@@ -1,6 +1,6 @@
 <template>
     <div class="base-timer">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" >
+        <svg class="base-timer__svg" viewBox="0 0 100 100">
             <g class="base-timer__circle">
                 <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
                 <path
@@ -91,7 +91,7 @@
 
         watch: {
             timeLeft(newValue) {
-                if (newValue === this.points) {
+                if (newValue === 0) {
                     this.onTimesUp();
                 }
             }
@@ -102,15 +102,14 @@
                 clearInterval(this.timerInterval);
             },
             stopTimer() {
-              this.points = (timeLimit - this.timePassed) - 1
+                this.points = timeLimit - this.timePassed;
+                this.onTimesUp();
             },
             startTimer() {
+                this.timePassed = 0;
                 this.points = 0;
                 this.timerInterval = setInterval(() => (this.timePassed += 1), 1000);
             },
-            resetTimer(){
-                this.timePassed = 0;
-            }
         }
     };
 </script>
@@ -120,7 +119,6 @@
         position: relative;
         width: 150px;
         height: 150px;
-
 
 
         &__svg {
