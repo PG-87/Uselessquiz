@@ -16,7 +16,7 @@
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
 
-                <a @click="postData" class="btn btn-primary btn-large btn-block">Logga in</a>
+                <button @click="postData" class="btn btn-primary btn-large btn-block">Logga in</button>
                 <br>
                 <router-link to="/register">Vill du registrera dig </router-link>
 

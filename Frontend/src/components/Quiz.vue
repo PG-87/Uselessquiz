@@ -127,7 +127,7 @@
                 });
                // console.log(this.answers);
                 this.questionNumber += 1;
-
+                this.$refs.timer.startTimer();
 
             },
             checkAnswer: function (id) {
@@ -186,7 +186,6 @@
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white'
                 this.$refs.score.showResults();
-
             }
         }
     }
