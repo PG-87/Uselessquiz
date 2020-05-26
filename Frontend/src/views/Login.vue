@@ -56,23 +56,19 @@
                     const data = await response.json();
                     console.log(data);
 
-                    //console.log(data.userId)
-                    if(data.user === this.input.name) {
-                        this.$emit("authenticated", true);
-                        this.$emit("user", data);
-                        await this.$router.replace({name: "mypage"});
-                    }
-                    else  {
+                    if (data.length === 0) {
                         alert("The username and / or password is incorrect");
+                    }
+                    else if(data[0].user === this.input.name) {
+                        this.$emit("authenticated", true);
+                        this.$emit("user", data[0]);
+                        await this.$router.replace({name: "mypage"});
                     } }
                 else {
                     alert("A username and password must be present");
                 }
-
             },
-
         }
-
     }
 </script>
 

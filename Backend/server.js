@@ -82,13 +82,13 @@ app.put("/api/new_user", (req, res, next) => {
 app.post("/api/users/login", (req, res, next) => {
     var sql = "select userId,user,userEMAIL from USERS WHERE passCode = ? AND user = ?";
     var params = [req.body.pass,req.body.user];
-     db.get(sql, params, (err, rows) => {
+     db.all(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({"error":err.message});
             return;
         }
-        // res.json(rows);
-        console.log(res.json(rows))
+        // else if (rows.length === 0)
+        res.json(rows);
     });
 });
 //</editor-fold>
