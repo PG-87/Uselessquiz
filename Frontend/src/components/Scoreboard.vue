@@ -74,50 +74,52 @@
                 ]
             }
         },
-        mounted() {
-            for (let i = 0; i < 3; i++) {
-                let input;
-                switch (i) {
-                    case 0:
-                        input = '10';
-                        break;
-                    case 1:
-                        input = '15';
-                        break;
-                    case 2:
-                        input = '20';
-                        break;
-                }
-                fetch('http://127.0.0.1:3000/api/scores/' + input)
-                    .then((response) => {
-                        return response.json()
-                    })
-                    .then((data) => {
-                        let highscoreArr = [];
-                        data.forEach(function (entry) {
-                            highscoreArr.push(entry)
-                        });
-                        let board;
-                        switch (i) {
-                            case 0:
-                                board = this.scores1;
-                                break;
-                            case 1:
-                                board = this.scores2;
-                                break;
-                            case 2:
-                                board = this.scores3;
-                                break;
-                        }
-                        console.log(highscoreArr);
-                        let id = 0;
-                        board.forEach(function (entry) {
-                            entry.Score = highscoreArr[id].Score;
-                            entry.User = highscoreArr[id].user;
-                            entry.Date = highscoreArr[id].datetime;
-                            id++;
+        methods:  {
+            showResults: function(){
+                for (let i = 0; i < 3; i++) {
+                    let input;
+                    switch (i) {
+                        case 0:
+                            input = '10';
+                            break;
+                        case 1:
+                            input = '15';
+                            break;
+                        case 2:
+                            input = '20';
+                            break;
+                    }
+                    fetch('http://127.0.0.1:3000/api/scores/' + input)
+                        .then((response) => {
+                            return response.json()
                         })
-                    })
+                        .then((data) => {
+                            let highscoreArr = [];
+                            data.forEach(function (entry) {
+                                highscoreArr.push(entry)
+                            });
+                            let board;
+                            switch (i) {
+                                case 0:
+                                    board = this.scores1;
+                                    break;
+                                case 1:
+                                    board = this.scores2;
+                                    break;
+                                case 2:
+                                    board = this.scores3;
+                                    break;
+                            }
+                            console.log(highscoreArr);
+                            let id = 0;
+                            board.forEach(function (entry) {
+                                entry.Score = highscoreArr[id].Score;
+                                entry.User = highscoreArr[id].user;
+                                entry.Date = highscoreArr[id].datetime;
+                                id++;
+                            })
+                        })
+                }
             }
         }
     }

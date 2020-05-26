@@ -1,6 +1,7 @@
 <template>
     <div id="quiz" :style="quiz.style">
-        <Scoreboard id="scoreboard" v-bind:style="resultScreen.style"></Scoreboard>
+        <Scoreboard id="scoreboard" ref="score" v-bind:style="resultScreen.style"></Scoreboard>
+        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}}</p>
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
@@ -106,6 +107,8 @@
                     })
             },
             nextQuestion: function (i) {
+                this.$refs.timer.resetTimer();
+                this.$refs.timer.startTimer();
                 this.answers.forEach(function (entry) {
                     entry.locked = false;
                     entry.correct = false;
@@ -122,9 +125,10 @@
                         entry.correct = true;
                     }
                 });
-                console.log(this.answers);
+               // console.log(this.answers);
                 this.questionNumber += 1;
                 this.$refs.timer.startTimer();
+
             },
             checkAnswer: function (id) {
                 this.$refs.timer.stopTimer();
@@ -181,6 +185,7 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white'
+                this.$refs.score.showResults();
             }
         }
     }
