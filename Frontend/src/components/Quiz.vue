@@ -173,10 +173,10 @@
                 };
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             },
-            showResult: function () {
+            showResult: async function () {
 
                 if(!(this.user==null)) {
-                    this.putResult();
+                  await this.putResult();
                 }
                 this.answers.forEach(function (entry) {
                     entry.style.display = 'none'
@@ -187,7 +187,7 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white';
-                this.$refs.score.showResults(0);
+               await this.$refs.score.showResults(0);
             }
         }
     }

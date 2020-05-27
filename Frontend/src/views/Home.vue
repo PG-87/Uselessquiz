@@ -111,8 +111,24 @@
     }
 
     @media only screen and (max-width: 768px) {
+
         #home {
             width: auto;
+        }
+
+        #start {
+            width: 150px;
+            font-size: 20px;
+            height: 50px;
+            margin: 10px auto auto;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 15px;
         }
     }
 </style>

@@ -202,4 +202,15 @@
         background-color: #ddd;
     }
 
+    /* Mobile css*/
+    @media only screen and (max-width: 768px) {
+
+        #scoreboard {
+            width: 70%;
+            grid-template-columns: 250px;
+            margin: auto;
+            grid-row-gap: 10px;
+        }
+    }
+
 </style>
