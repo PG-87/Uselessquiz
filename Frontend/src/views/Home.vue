@@ -1,16 +1,20 @@
 <template>
     <div id="home">
         <div class="welcoming" v-cloak :style="home.style">
-        <br>
-        <h1>Välkommen till Useless Quiz</h1>
-        <p>Detta quiz är för dig som har tråkigt, sitter i karantän, kunskap nördar eller de som förbereder sig för "vem
-            vet mest". Vi inbjuder dig att ha kul nu!</p>
-        <p>Tryck på en av knapparna nedan för att starta ett quiz, eller logga in om du vill ha en chans att komma med på
-            highscore listan.</p>
+            <br>
+            <h1>Välkommen till Useless Quiz</h1>
+            <p>Detta quiz är för dig som har tråkigt, sitter i karantän, kunskap nördar eller de som förbereder sig för
+                "vem
+                vet mest". Vi inbjuder dig att ha kul nu!</p>
+            <p>Tryck på en av knapparna nedan för att starta ett quiz, eller logga in om du vill ha en chans att komma
+                med på
+                highscore listan.</p>
 
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
+
         <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
+
         <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>
 </template>
@@ -29,21 +33,16 @@
             return {
                 home: {style: {display: 'grid'}},
                 quiz: {style: {display: 'none'}},
-              //  user: Object
             }
         },
-        props:{
-
-        },
+        props: {},
         methods: {
             togglePage: function () {
-                if(this.$parent.user==null){
+                if (this.$parent.user == null) {
                     alert("Observera att ditt resultat inte sparas\n om du inte är inloggad!!")
                 }
                 this.home.style.display = 'none';
                 this.quiz.style.display = 'grid';
-               // this.user=native.user
-                //console.log(this.user)
             }
         },
         mounted() {
@@ -51,7 +50,6 @@
         }
     }
 </script>
-
 
 <style scoped>
     h1 {
@@ -68,7 +66,6 @@
         font-weight: 800;
         margin-left: 50px;
         margin-right: 50px;
-
     }
 
     #home {
@@ -90,10 +87,8 @@
         -o-background-size: contain;
         background-size: cover;
         background-repeat: no-repeat;
-
         width: 100%;
         height: auto;
-        /*height: 100%;*/
         min-height: 500px;
         opacity: 0.4;
         z-index: -1;
@@ -102,7 +97,6 @@
 
     #start {
         width: 200px;
-        /*background-color: white;*/
         background-color: #3498DB;
         color: white;
         font-size: 25px;

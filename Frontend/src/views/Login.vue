@@ -30,6 +30,7 @@
 
 <script>
     export default {
+
         data: function () {
             return {
                 input:{
@@ -37,15 +38,10 @@
                 name: "",}
             }
         },
-       /* props: function (){
-            return {
-                // question: String,
-                userId: 0
-            }},*/
+
         methods: {
             postData: async function () {
                 if(this.input.name !== "" && this.input.password !== ""){
-                // POST request using fetch with async/await
                     const requestOptions = {
                     method: "POST",
                     mode: 'cors',
@@ -94,7 +90,6 @@
         border-radius: 5px;
         margin-right: 10px;
         border-style: solid;
-
     }
 
     .app-title {
@@ -105,6 +100,7 @@
     .login-form {
         text-align: center;
     }
+
     .control-group {
         margin-bottom: 10px;
     }
@@ -146,7 +142,4 @@
     .btn:hover {
         background-color: #2980B9;
     }
-
-
-
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <img class=logo alt="vue logo" src="./assets/logo.png">
+
         <div id="nav">
             <router-link to="/">Start</router-link>
             <router-link to="/faq">FAQ</router-link>
@@ -10,7 +11,9 @@
             <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>
+
         <router-view @authenticated="setAuthenticated" @user="setUser" />
+
         <footer></footer>
     </div>
 </template>
@@ -23,14 +26,15 @@
             return {
                 authenticated: false,
                 user: null
-
             }
         },
+
         mounted() {
             if(!this.authenticated) {
                 this.$router.replace({ name: "home" });
             }
         },
+
         methods: {
             setAuthenticated(status) {
                 this.authenticated = status;
