@@ -2,11 +2,11 @@
     <div id="app">
         <img class=logo alt="vue logo" src="./assets/logo.png">
         <div id="nav">
-            <router-link to="/">Home</router-link>
+            <router-link to="/">Start</router-link>
             <router-link to="/faq">FAQ</router-link>
             <router-link to="/kontaktaoss">Kontakta oss</router-link>
             <router-link v-if="!authenticated" to="/login" v-on:click.native="setAuthenticated()" replace>Logga in</router-link>
-            <router-link v-if="authenticated" to="/mypage" replace>My Page</router-link>
+            <router-link v-if="authenticated" to="/mypage" replace>Min sida</router-link>
             <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>

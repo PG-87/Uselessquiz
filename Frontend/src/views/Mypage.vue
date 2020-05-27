@@ -4,18 +4,24 @@
         <p>
             This is users page {{this.$parent.user.user}}
         </p>
+        <Scoreboard ref="scoreboard"/>
     </div>
 </template>
 
 <script>
+    import Scoreboard from "../components/Scoreboard";
+
     export default {
         name: 'mypage',
         data() {
             return {};
         },
-     //   mounted(){
-
-       // }
+        components: {
+            Scoreboard
+        },
+       mounted(){
+            this.$refs.scoreboard.showResults(this.$parent.user.userId)
+       }
     }
 </script>
 
