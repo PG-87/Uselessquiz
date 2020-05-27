@@ -46,11 +46,9 @@ import Footer from "./components/Footer";
             },
             setUser(id){
                 this.user = id;
-                console.log(this.user)
             },
             logout() {
                 this.authenticated = false;
-                console.log(this.authenticated);
                 this.setUser(null)
                 this.$router.push({path: '/'})
             }
