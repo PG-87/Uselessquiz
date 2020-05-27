@@ -1,4 +1,4 @@
-# agilquiz
+# UselessQuiz
 
 Projektarbete Agil Utveckling - Quiz
 
