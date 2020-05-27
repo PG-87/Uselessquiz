@@ -42,6 +42,7 @@
         methods: {
 
             putData: async function () {
+                if(this.RegName !== "" && this.RegPassword !== ""&& this.RegEmail !== ""){
                 // PUT request using fetch with async/await
                 const requestOptions = {
                     method: "PUT",
@@ -51,9 +52,18 @@
                 };
                 const response = await fetch("http://127.0.0.1:3000/api/new_user", requestOptions);
                 const data = await response.json();
-                console.log(data);
-                alert("Tack för registret")
-
+                    if (data.Message==="User already exists") {
+                        alert("Denna email finns redan!!");
+                    }
+                    else if(data[0].user === this.RegName) {
+                        alert("Tack för registreringen")
+                        this.$emit("authenticated", true);
+                        this.$emit("user", data[0]);
+                        await this.$router.replace({name: "mypage"});
+                    } }
+                else {
+                    alert("Alla fält måste vara ifyllda!");
+                }
 
             }
         }

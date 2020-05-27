@@ -45,11 +45,11 @@ app.get("/api/questions/range/:number", (req, res, next) => {
 
 //<editor-fold desc="User handle">
 app.put("/api/new_user", (req, res, next) => {
-    var txt ={
-            user:req.body.user,
-            pass:req.body.pass,
-            email:req.body.email
-    }
+    // var txt ={
+    //         user:req.body.user,
+    //         pass:req.body.pass,
+    //         email:req.body.email
+    // }
     var txtdata=req.body.email.toString();
     txtdata=txtdata.toLowerCase();
     txtdata=[txtdata];
@@ -69,8 +69,8 @@ app.put("/api/new_user", (req, res, next) => {
         }else{
             insert = "INSERT INTO USERS (user,passCODE,userEMAIL) VALUES(?,?,?)";
             db.run(insert,[req.body.user,req.body.pass,txtdata[0]]);
-            sql = "select userid from USERS where userEMAIL = ?";
-            params = [txtdata];
+            sql = "select userid,user,userEMAIL from USERS where userEMAIL = ?";
+            params = [txtdata[0]];
             db.all(sql, params, (err2,rows2) => {
                 res.json(rows2);
             });
