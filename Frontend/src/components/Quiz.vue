@@ -318,5 +318,49 @@
         font-size: 20px;
     }
 
+    @media screen and (max-width: 768px) {
+
+        #quiz {
+            grid-template-rows: minmax(100px, auto) auto auto 1fr;
+            width: auto;
+        }
+
+        #question {
+            font-size: 20px;
+            text-align: center;
+            margin: auto 20px;
+            max-width: 740px;
+        }
+
+        section{
+            grid-template-columns: 350px;
+            grid-template-rows: auto;
+            grid-gap: 7px 0;
+            margin: auto;
+        }
+
+        .answerButton {
+            width: 250px;
+            height: 50px;
+            font-size: 20px;
+            color: white;
+        }
+
+        #nextButton, #resultButton {
+            width: 150px;
+            height: 50px;
+            background-color: #3498DB;
+            color: white;
+            font-size: 20px;
+            font-style: italic;
+            position: relative;
+            /*margin-right: ;*/
+        }
+
+        #score, #round {
+            text-align: center;
+            margin: auto;
+        }
+    }
 
 </style>

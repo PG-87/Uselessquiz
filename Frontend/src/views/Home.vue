@@ -109,4 +109,10 @@
     #scoreboard {
         margin-top: 100px;
     }
+
+    @media only screen and (max-width: 768px) {
+        #home {
+            width: auto;
+        }
+    }
 </style>

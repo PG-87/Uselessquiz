@@ -36,6 +36,8 @@
         line-height:5px;
         color: darkslategray;
 
+        width: 100%;
+
     }
     .site-footer .social-icons
     {
