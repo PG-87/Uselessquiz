@@ -181,8 +181,8 @@
                 this.question = '';
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
-                this.quiz.style.backgroundColor = 'white'
-                this.$refs.score.showResults();
+                this.quiz.style.backgroundColor = 'white';
+                this.$refs.score.showResults(0);
             }
         }
     }
