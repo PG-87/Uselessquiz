@@ -90,4 +90,15 @@ import Footer from "./components/Footer";
         bottom: 0;
         width: 100%;
     }
+
+    @media screen and (max-width: 768px) {
+        hr {
+            display: none;
+        }
+
+        Footer {
+            position: static;
+            width: 768px;
+        }
+    }
 </style>

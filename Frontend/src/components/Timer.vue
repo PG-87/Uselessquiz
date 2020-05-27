@@ -168,4 +168,17 @@
             color: white;
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        .base-timer {
+            width: 100px;
+            height: 100px;
+
+            &__label {
+                width: 100px;
+                height: 100px;
+                font-size: 30px;
+            }
+        }
+    }
 </style>
