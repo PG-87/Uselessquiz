@@ -1,7 +1,10 @@
 <template>
     <div id="quiz" :style="quiz.style">
+
         <Scoreboard id="scoreboard" ref="score" v-bind:style="resultScreen.style"></Scoreboard>
+
         <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}}</p>
+
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
@@ -9,6 +12,7 @@
         </ul>
 
         <h1 id="question">{{ question }}</h1>
+
         <timer id="timer" ref="timer" :style="info.style" :points="this.points"/>
 
         <section v-bind:style="info.style">
@@ -17,17 +21,21 @@
                     v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
                 answer.answer }}
             </button>
+
             <p id="score">Score: {{ scoreSum }}/{{questions.length * 20}}</p>
             <p id="round">Fråga: {{ questionNumber }}/{{questions.length}}</p>
         </section>
+
         <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
             fråga
         </button>
+
         <ul id="startButton" :style="start.style">
             <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock>10 Frågor</button></li>
             <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock>15 Frågor</button></li>
             <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock>20 Frågor</button></li>
         </ul>
+
         <button id="resultButton" @click="showResult()" :style="result.style">Resultat</button>
 
     </div>
@@ -123,7 +131,6 @@
                         entry.correct = true;
                     }
                 });
-               // console.log(this.answers);
                 this.questionNumber += 1;
                 this.$refs.timer.startTimer();
             },

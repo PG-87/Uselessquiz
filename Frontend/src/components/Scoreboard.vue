@@ -8,9 +8,9 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="(score, index) in scores1" :key="index">
-                    <td v-for="(field, indexColumn) in fields" :key="indexColumn">{{score[field]}}</td>
-                </tr>
+            <tr v-for="(score, index) in scores1" :key="index">
+                <td v-for="(field, indexColumn) in fields" :key="indexColumn">{{score[field]}}</td>
+            </tr>
             </tbody>
         </table>
         <table>
@@ -74,8 +74,8 @@
                 ]
             }
         },
-        methods:  {
-            showResults: function(id){
+        methods: {
+            showResults: function (id) {
                 let user = id;
                 for (let i = 0; i < 3; i++) {
                     let input;
@@ -121,8 +121,7 @@
                                     id++;
                                 })
                             })
-                    }
-                    else {
+                    } else {
                         fetch('http://127.0.0.1:3000/api/scores/' + input + '/' + user)
                             .then((response) => {
                                 return response.json()
@@ -154,29 +153,24 @@
                                 })
                             })
                     }
-                    }
-
                 }
+
             }
         }
+    }
 </script>
 
 <style scoped>
 
     #scoreboard {
-        /*background-color: rgb(230,230,230);*/
-        overflow-x:auto;
+        overflow-x: auto;
         height: auto;
         width: 800px;
         margin: auto;
         display: grid;
-        /*grid-template-areas: 'score1' 'score2' 'score3';*/
         grid-template-columns: 250px 250px 250px;
         grid-gap: 0 25px;
-        /*grid-gap: 2px 25px;*/
-        /*border: 2px solid #656565;*/
     }
-
 
     table {
         border-collapse: collapse;
@@ -186,10 +180,10 @@
     }
 
     table td, th {
-        /*border: 1px solid black;*/
         padding: 3px;
         width: 100px;
     }
+
     table th {
         padding: 5px;
         text-align: center;
@@ -197,6 +191,7 @@
         color: white;
         height: 8px;
     }
+
     table caption {
         font-size: 21px;
     }
@@ -204,7 +199,9 @@
     table tbody tr {
         height: 6px;
     }
-    /*table tr:nth-child(even){background-color: #f2f2f2;}*/
 
-    table tr:hover {background-color: #ddd;}
+    table tr:hover {
+        background-color: #ddd;
+    }
+
 </style>
