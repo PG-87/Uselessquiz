@@ -11,6 +11,7 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
         <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
+
         <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>
 </template>
@@ -18,7 +19,6 @@
 <script>
     import Quiz from "../components/Quiz";
     import Scoreboard from "../components/Scoreboard";
-
     export default {
         name: 'home',
         components: {
