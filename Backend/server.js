@@ -45,11 +45,7 @@ app.get("/api/questions/range/:number", (req, res, next) => {
 
 //<editor-fold desc="User handle">
 app.put("/api/new_user", (req, res, next) => {
-    // var txt ={
-    //         user:req.body.user,
-    //         pass:req.body.pass,
-    //         email:req.body.email
-    // }
+   
     var txtdata=req.body.email.toString();
     txtdata=txtdata.toLowerCase();
     txtdata=[txtdata];
