@@ -51,7 +51,7 @@
                 };
                 const response = await fetch("http://127.0.0.1:3000/api/new_user", requestOptions);
                 const data = await response.json();
-                console.log(data)
+                console.log(data);
                 alert("Tack för registret")
 
 

@@ -50,7 +50,6 @@
                     };
                     const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
                     const data = await response.json();
-                    console.log(data);
 
                     if (data.length === 0) {
                         alert("Användarnamn och / eller lösenord är felaktigt!");

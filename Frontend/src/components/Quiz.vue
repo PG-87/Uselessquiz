@@ -171,7 +171,6 @@
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
                 };
-                console.log(requestOptions)
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             },
             showResult: function () {
@@ -179,7 +178,6 @@
                 if(!(this.user==null)) {
                     this.putResult();
                 }
-                console.log(this.resultArr);
                 this.answers.forEach(function (entry) {
                     entry.style.display = 'none'
                 });

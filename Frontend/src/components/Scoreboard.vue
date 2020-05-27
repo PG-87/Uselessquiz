@@ -112,7 +112,6 @@
                                         board = this.scores3;
                                         break;
                                 }
-                                console.log(highscoreArr);
                                 let id = 0;
                                 board.forEach(function (entry) {
                                     entry.Score = highscoreArr[id].Score;
@@ -143,7 +142,6 @@
                                         board = this.scores3;
                                         break;
                                 }
-                                console.log(highscoreArr);
                                 let id = 0;
                                 board.forEach(function (entry) {
                                     entry.Score = highscoreArr[id].Score;
