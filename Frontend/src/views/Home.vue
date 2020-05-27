@@ -22,7 +22,6 @@
 <script>
     import Quiz from "../components/Quiz";
     import Scoreboard from "../components/Scoreboard";
-
     export default {
         name: 'home',
         components: {

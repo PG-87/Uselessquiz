@@ -14,14 +14,19 @@
 
         <router-view @authenticated="setAuthenticated" @user="setUser" />
 
-        <footer></footer>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
+import Footer from "./components/Footer";
 
     export default {
         name: 'app',
+        components: {
+            Footer
+        },
+
         data() {
             return {
                 authenticated: false,
