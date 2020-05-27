@@ -12,24 +12,22 @@
         </div>
         <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
 
-<!--        <Scoreboard></Scoreboard>-->
+        <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>
 </template>
 
 <script>
     import Quiz from "../components/Quiz";
-
-    // import Scoreboard from "../components/Scoreboard";
+    import Scoreboard from "../components/Scoreboard";
     export default {
         name: 'home',
         components: {
             Quiz,
-
-           // Scoreboard
+            Scoreboard
         },
         data: function () {
             return {
-                home: {style: {display: 'initial'}},
+                home: {style: {display: 'grid'}},
                 quiz: {style: {display: 'none'}},
               //  user: Object
             }
@@ -47,6 +45,9 @@
                // this.user=native.user
                 //console.log(this.user)
             }
+        },
+        mounted() {
+            this.$refs.scoreboard.showResults(0);
         }
     }
 </script>
@@ -110,5 +111,9 @@
         border-radius: 6px;
         height: 70px;
         margin: 50px auto auto;
+    }
+
+    #scoreboard {
+        margin-top: 100px;
     }
 </style>

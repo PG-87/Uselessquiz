@@ -2,7 +2,7 @@
     <div class="login">
         <div class="login-screen">
             <div class="app-title">
-                <h1>Sign in</h1>
+                <h1>Logga in</h1>
             </div>
 
             <div class="login-form">
@@ -57,7 +57,7 @@
                     console.log(data);
 
                     if (data.length === 0) {
-                        alert("The username and / or password is incorrect");
+                        alert("Användarnamn och / eller lösenord är felaktigt!");
                     }
                     else if(data[0].user === this.input.name) {
                         this.$emit("authenticated", true);
@@ -65,7 +65,7 @@
                         await this.$router.replace({name: "mypage"});
                     } }
                 else {
-                    alert("A username and password must be present");
+                    alert("Både användarnamn och lösenord måste vara ifyllda!");
                 }
             },
         }
