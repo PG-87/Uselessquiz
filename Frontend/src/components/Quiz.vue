@@ -311,6 +311,7 @@
     #result {
         margin-top: 0;
         padding-left: 0;
+        padding-bottom: 10px;
     }
 
     #result li {
@@ -360,6 +361,18 @@
         #score, #round {
             text-align: center;
             margin: auto;
+        }
+
+        #result {
+            padding-bottom: 0;
+        }
+
+        hr {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-bottom: 10px;
         }
     }
 
