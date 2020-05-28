@@ -11,6 +11,7 @@
             <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
             <hr>
         </div>
+        <Slider id="slider"/>
 
         <router-view @authenticated="setAuthenticated" @user="setUser" />
         <Footer/>
@@ -19,11 +20,13 @@
 
 <script>
 import Footer from "./components/Footer";
+import Slider from "./components/Slider";
 
     export default {
         name: 'app',
         components: {
-            Footer
+            Footer,
+            Slider
         },
 
         data() {
@@ -48,7 +51,7 @@ import Footer from "./components/Footer";
             },
             logout() {
                 this.authenticated = false;
-                this.setUser(null)
+                this.setUser(null);
                 this.$router.push({path: '/'})
             }
         }
@@ -98,8 +101,20 @@ import Footer from "./components/Footer";
         width: 100%;
     }
 
+    #slider {
+        display: none;
+    }
+
     @media screen and (max-width: 768px) {
         #nav hr {
+            display: none;
+        }
+
+        #slider {
+            display: initial;
+        }
+
+        #nav {
             display: none;
         }
     }
