@@ -409,15 +409,15 @@
       "question": "Hur många år tillbringar människor av sitt liv i kö?",
       "correct_answer": "5 år",
       "incorrect_answer": [
-        "7",
-        "4",
-        "3"
+        "7 år",
+        "4 år",
+        "3 år"
       ]
     },
     {
       "id": 42,
       "question": "Hur lång tid tar för den mänskliga kroppen att återskapa en liter blod?",
-      "correct_answer": "två veckor ",
+      "correct_answer": "2 veckor",
       "incorrect_answer": [
         "5 dagar",
         "1 Vecka",
@@ -441,13 +441,13 @@
       "incorrect_answer": [
         "Häst",
         "Egen bil",
-        "konkurenter"
+        "Konkurenter"
       ]
     },
     {
       "id": 45,
       "question": "Bara en bok har tryckts i fler exemplar än bibeln, vilken?",
-      "correct_answer": "IKEA-katalogen.",
+      "correct_answer": "IKEA-katalogen",
       "incorrect_answer": [
         "Biltema-katalogen",
         "Sveriges lagbok",
