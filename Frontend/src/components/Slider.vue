@@ -1,23 +1,40 @@
 <template>
-    <Slide class="bm-overlay">
-        <router-link to="/" class="bm-burger-bars">Start</router-link>
-        <router-link to="/faq">FAQ</router-link>
-        <router-link to="/kontaktaoss">Kontakta oss</router-link>
-        <router-link v-if="!authenticated" to="/login" v-on:click.native="setAuthenticated()" replace>Logga in</router-link>
-        <router-link v-if="authenticated" to="/mypage" replace>Min sida</router-link>
-        <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
-    </Slide>
+<!--    <Slide class="bm-overlay">-->
+<!--        <router-link to="/" class="bm-burger-bars">Start</router-link>-->
+<!--        <router-link to="/faq">FAQ</router-link>-->
+<!--        <router-link to="/kontaktaoss">Kontakta oss</router-link>-->
+<!--        <router-link v-if="!authenticated" to="/login" v-on:click.native="setAuthenticated()" replace>Logga in</router-link>-->
+<!--        <router-link v-if="authenticated" to="/mypage" replace>Min sida</router-link>-->
+<!--        <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>-->
+<!--    </Slide>-->
+    <div>
+        <Menu v-bind="this.$attrs" @openMenu="openMenu" @closeMenu="closeMenu" right>
+            <slot><router-link to="/" class="bm-burger-bars">Start</router-link></slot>
+            <slot><router-link to="/faq">FAQ</router-link></slot>
+            <slot><router-link to="/kontaktaoss">Kontakta oss</router-link></slot>
+            <slot><router-link v-if="!this.$parent.authenticated" to="/login" v-on:click.native="this.$parent.setAuthenticated()" replace>Logga in</router-link></slot>
+            <slot><router-link v-if="this.$parent.authenticated" to="/mypage" replace>Min sida</router-link></slot>
+            <slot><router-link v-if="this.$parent.authenticated" to="/mypage" v-on:click.native="this.$parent.logout()" replace>Logga ut</router-link></slot>
+        </Menu>
+    </div>
 </template>
 
 <script>
-    import {Slide} from 'vue-burger-menu';
-
+    import Menu from '../components/Menu';
     export default {
-        name: "Slider",
+        name: 'slide',
         components: {
-            Slide
-        }
-    }
+            Menu: Menu
+        },
+        methods: {
+            openMenu() {
+                this.$emit('openMenu');
+            },
+            closeMenu() {
+                this.$emit('closeMenu');
+            }
+        },
+    };
 </script>
 
 <style scoped>
@@ -34,7 +51,7 @@
         cursor: pointer;
     }
     .bm-burger-bars {
-        background-color: white;
+        /*background-color: white;*/
     }
     .line-style {
         position: absolute;
@@ -75,15 +92,18 @@
         color: #b8b7ad;
         margin-left: 10%;
         font-size: 20px;
+        background-color: white;
     }
     .bm-item-list > * {
         display: flex;
+        flex-direction: column;
         text-decoration: none;
         padding: 0.7em;
+        background-color: #3498DB;
+        color: white;
     }
     .bm-item-list > * > span {
         margin-left: 10px;
         font-weight: 700;
-        color: white;
     }
 </style>
