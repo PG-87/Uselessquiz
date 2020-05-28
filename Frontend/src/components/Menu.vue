@@ -4,10 +4,10 @@
             <nav class="bm-item-list">
                 <slot></slot>
             </nav>
-            <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">
-                <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
-                </span>
-            </span>
+<!--            <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">-->
+<!--                <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">-->
+<!--                </span>-->
+<!--            </span>-->
         </div>
 
         <div ref="bmBurgerButton" class="bm-burger-button" @click="openMenu" :class="{ hidden: !burgerIcon }">
@@ -37,7 +37,8 @@
             width: {
                 type: [String],
                 required: false,
-                default: '300'
+                default: '111'
+                // default: '111'
             },
             disableEsc: {
                 type: Boolean,
@@ -59,7 +60,7 @@
             crossIcon: {
                 type: Boolean,
                 required: false,
-                default: true
+                default: false
             },
             disableOutsideClick: {
                 type: Boolean,
@@ -85,8 +86,7 @@
                 }
                 this.$nextTick(function() {
                     this.$refs.sideNav.style.width = this.width
-                        ? this.width + 'px'
-                        : '300px';
+                        ? this.width + '%' : '300';
                 });
             },
             closeMenu() {
@@ -202,6 +202,7 @@
     html {
         height: 100%;
     }
+
     .bm-burger-button {
         position: absolute;
         width: 36px;
@@ -210,34 +211,43 @@
         top: 36px;
         cursor: pointer;
     }
+
     .bm-burger-button.hidden {
         display: none;
     }
+
     .bm-burger-bars {
         background-color: #373a47;
+        width: 100%;
     }
+
     .line-style {
         position: absolute;
         height: 20%;
         left: 0;
         right: 0;
     }
+
     .cross-style {
         position: absolute;
         top: 12px;
         right: 2px;
         cursor: pointer;
     }
+
     .bm-cross {
-        background: #bdc3c7;
+        /*background: #bdc3c7;*/
     }
+
     .bm-cross-button {
         height: 24px;
         width: 24px;
     }
+
     .bm-cross-button.hidden {
         display: none;
     }
+
     .bm-menu {
         height: 100%; /* 100% Full-height */
         width: 0; /* 0 width - change this with JavaScript */
@@ -245,27 +255,38 @@
         z-index: 1000; /* Stay on top */
         top: 0;
         left: 0;
-        background-color: rgb(63, 63, 65); /* Black*/
+        background-color: rgba(0,0,0,0.6); /* Black*/
         overflow-x: hidden; /* Disable horizontal scroll */
-        padding-top: 60px; /* Place content 60px from the top */
+        padding-top: 35px; /* Place content 60px from the top */
         transition: 0.5s; /*0.5 second transition effect to slide in the sidenav*/
     }
+
     .bm-overlay {
-        background: rgba(0, 0, 0, 0.3);
+        /*background: rgba(0, 0, 0, 0.5);*/
+        /*z-index: 999;*/
     }
+
     .bm-item-list {
         color: #b8b7ad;
         margin-left: 10%;
         font-size: 20px;
     }
+
     .bm-item-list > * {
         display: flex;
         text-decoration: none;
         padding: 0.7em;
     }
+
     .bm-item-list > * > span {
         margin-left: 10px;
         font-weight: 700;
         color: white;
     }
+
+    /*body {*/
+    /*    filter: blur(2px);*/
+    /*}*/
+
+
 </style>
