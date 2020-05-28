@@ -28,8 +28,11 @@
 <style scoped>
     .site-footer
     {
+        position: static;
+        bottom: 0;
 
-        margin-top: 150px;
+        margin-top: 50px;
+        margin-bottom: 0;
         background-color:#3498DB;
         padding:25px 0 10px;
         font-size:15px;

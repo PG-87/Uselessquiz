@@ -57,6 +57,13 @@ import Footer from "./components/Footer";
 </script>
 
 <style>
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -85,20 +92,15 @@ import Footer from "./components/Footer";
     }
 
     Footer {
-        position: fixed;
+        position: static;
         left: 0;
         bottom: 0;
         width: 100%;
     }
 
     @media screen and (max-width: 768px) {
-        hr {
+        #nav hr {
             display: none;
-        }
-
-        Footer {
-            position: static;
-            width: 768px;
         }
     }
 </style>
