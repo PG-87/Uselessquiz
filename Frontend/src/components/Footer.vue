@@ -28,16 +28,14 @@
 <style scoped>
     .site-footer
     {
-        position: static;
         bottom: 0;
-
-        margin-top: 50px;
+        /*margin-top: 50px;*/
         margin-bottom: 0;
-        background-color:#3498DB;
+        background-color:#2c3e50;
         padding:25px 0 10px;
         font-size:15px;
         line-height:5px;
-        color: darkslategray;
+        color: white;
 
         width: 100%;
 
