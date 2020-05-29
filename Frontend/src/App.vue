@@ -17,7 +17,7 @@
 
             <router-view @authenticated="setAuthenticated" @user="setUser" />
         </div>
-        <Footer :style="footerPosition.style"/>
+        <Footer :style="{position: footerPos}"/>
     </div>
 </template>
 
@@ -37,7 +37,7 @@ import Slider from "./components/Slider";
                 authenticated: false,
                 user: null,
                 toggleBlur: false,
-                footerPosition: {style: {position: 'fixed'}}
+                footerPos: 'fixed'
             }
         },
 
@@ -100,7 +100,7 @@ import Slider from "./components/Slider";
     }
 
     Footer {
-        position: fixed;
+        /*position: ;*/
 
         left: 0;
         margin-bottom: 0;
@@ -129,7 +129,7 @@ import Slider from "./components/Slider";
         }
 
         Footer {
-            position: relative;
+            /*position: relative;*/
         }
     }
 </style>

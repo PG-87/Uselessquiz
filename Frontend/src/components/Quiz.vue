@@ -174,7 +174,7 @@
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             },
             showResult: async function () {
-
+                this.$emit('footerPosition');
                 if(!(this.user==null)) {
                   await this.putResult();
                 }
@@ -187,7 +187,7 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white';
-                this.footerPosition.style.position = 'page';
+                // this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
             }
         }
@@ -202,7 +202,7 @@
         display: grid;
         grid-template-rows: minmax(150px, auto) auto auto 1fr;
         background-color: white;
-        margin: auto auto 150px;
+        margin: auto auto 70px;
     }
 
     #question {

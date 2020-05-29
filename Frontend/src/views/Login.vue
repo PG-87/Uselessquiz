@@ -63,6 +63,10 @@
                     alert("Både användarnamn och lösenord måste vara ifyllda!");
                 }
             },
+        },
+
+        mounted() {
+            this.$parent.footerPos = 'fixed';
         }
     }
 </script>
