@@ -20,7 +20,8 @@
             Scoreboard
         },
        mounted(){
-            this.$refs.scoreboard.showResults(this.$parent.user.userId)
+            this.$refs.scoreboard.showResults(this.$parent.user.userId);
+            this.$parent.footerPos = 'fixed';
        }
     }
 </script>

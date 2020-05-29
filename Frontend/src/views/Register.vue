@@ -66,6 +66,9 @@
                 }
 
             }
+        },
+        mounted() {
+            this.$parent.footerPos = 'fixed';
         }
 
     }

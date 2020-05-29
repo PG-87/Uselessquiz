@@ -25,6 +25,12 @@
 
 <script>
 
+    export default {
+        mounted() {
+            this.$parent.footerPos = 'fixed';
+        }
+    }
+
 </script>
 
 <style>
