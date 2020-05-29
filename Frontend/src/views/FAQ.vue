@@ -50,10 +50,10 @@
 
                 return this;
             },
-
-            }
-
-
+        },
+        mounted() {
+            this.$parent.footerPos = 'fixed';
+        }
     }
 
 
