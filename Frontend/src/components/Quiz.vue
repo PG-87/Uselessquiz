@@ -187,6 +187,7 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white';
+                this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
             }
         }
@@ -198,10 +199,10 @@
     #quiz {
         height: auto;
         width: 800px;
-        margin: auto;
         display: grid;
         grid-template-rows: minmax(150px, auto) auto auto 1fr;
         background-color: white;
+        margin: auto auto 150px;
     }
 
     #question {
@@ -272,7 +273,7 @@
 
     #startButton li {
         display: inline;
-        padding-right: 10px;
+        padding: 0 10px 0 0;
     }
 
     #startButton {
@@ -280,6 +281,8 @@
         top: 200px;
         left: 50px;
         right: 50px;
+        padding: 0;
+        margin: auto;
     }
 
     p {
@@ -328,9 +331,20 @@
 
         #question {
             font-size: 20px;
+            word-break: break-word;
             text-align: center;
             margin: auto 20px;
-            max-width: 740px;
+            max-width: 90%;
+        }
+
+        #startButton {
+            position: static;
+            margin-top: 10%;
+            padding: 0;
+        }
+
+        #startButton button {
+            margin: 8px;
         }
 
         section{
@@ -362,9 +376,12 @@
             text-align: center;
             margin: auto;
         }
-
         #result {
-            padding-bottom: 0;
+            width: 90%;
+            justify-self: center;
+        }
+        #result li {
+            font-size: 15px;
         }
 
         hr {

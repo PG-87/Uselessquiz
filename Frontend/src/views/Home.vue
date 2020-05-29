@@ -13,7 +13,7 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
 
-        <Quiz :user="this.$parent.user" :style="quiz.style"></Quiz>
+        <Quiz :user="this.$parent.user" :style="quiz.style" :footer="this.$parent.footerPosition.style"></Quiz>
 
         <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>

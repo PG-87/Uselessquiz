@@ -3,7 +3,6 @@
         <Slider id="slider" ref="slide"/>
 
         <div id="wrapper" :class="{'blur-content': this.toggleBlur}">
-<!--        <div id="wrapper">-->
             <img class=logo alt="vue logo" src="./assets/logo.png">
 
             <div id="nav">
@@ -17,8 +16,8 @@
             </div>
 
             <router-view @authenticated="setAuthenticated" @user="setUser" />
-            <Footer/>
         </div>
+        <Footer :style="footerPosition.style"/>
     </div>
 </template>
 
@@ -37,7 +36,8 @@ import Slider from "./components/Slider";
             return {
                 authenticated: false,
                 user: null,
-                toggleBlur: false
+                toggleBlur: false,
+                footerPosition: {style: {position: 'fixed'}}
             }
         },
 
@@ -78,7 +78,7 @@ import Slider from "./components/Slider";
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        min-height: 1000px;
+        /*min-height: 1000px;*/
     }
 
     .logo {
@@ -100,9 +100,10 @@ import Slider from "./components/Slider";
     }
 
     Footer {
-        position: static;
+        position: fixed;
+
         left: 0;
-        bottom: 0;
+        margin-bottom: 0;
         width: 100%;
     }
 
@@ -125,6 +126,10 @@ import Slider from "./components/Slider";
 
         .blur-content{
             filter: blur(5px);
+        }
+
+        Footer {
+            position: relative;
         }
     }
 </style>
