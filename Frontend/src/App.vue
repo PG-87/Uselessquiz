@@ -2,8 +2,8 @@
     <div id="app">
         <Slider id="slider" ref="slide"/>
 
-<!--        <div id="wrapper" :class="{'blur-content': 'this.$refs.slide.toggleBlur'}">-->
-        <div id="wrapper">
+        <div id="wrapper" :class="{'blur-content': this.toggleBlur}">
+<!--        <div id="wrapper">-->
             <img class=logo alt="vue logo" src="./assets/logo.png">
 
             <div id="nav">
@@ -36,7 +36,8 @@ import Slider from "./components/Slider";
         data() {
             return {
                 authenticated: false,
-                user: null
+                user: null,
+                toggleBlur: false
             }
         },
 

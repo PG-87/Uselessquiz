@@ -26,19 +26,14 @@
         components: {
             Menu: Menu
         },
-        data: function () {
-            return {
-                toggleBlur: false
-            }
-        },
         methods: {
             openMenu() {
                 this.$emit('openMenu');
-                this.toggleBlur = true
+                this.$parent.toggleBlur = true
             },
             closeMenu() {
                 this.$emit('closeMenu');
-                this.toggleBlur = false
+                this.$parent.toggleBlur = false
             },
             setAuthenticated() {
               this.$parent.setAuthenticated()
