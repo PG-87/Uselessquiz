@@ -1,9 +1,9 @@
 <template>
     <div id="mypage">
-        <h1>Secure Area</h1>
-        <p>
-            This is users page {{this.$parent.user.user}}
-        </p>
+        <h1>Välkommen till din sida</h1>
+        <h3>
+            Inloggad som: {{this.$parent.user.user}}
+        </h3>
         <Scoreboard ref="scoreboard"/>
     </div>
 </template>
