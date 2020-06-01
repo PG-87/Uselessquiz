@@ -10,7 +10,7 @@
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }} s</li>
         </ul>
-        <button class="answerButton" v-bind:style="resultScreen.style" v-on:click="newGame()">Ny omgång!</button>
+        <button class="answerButton" v-bind:style="{display: resultScreenStyle}" v-on:click="newGame()">Ny omgång!</button>
 
         <h1 id="question">{{ question }}</h1>
 
@@ -198,9 +198,17 @@
                await this.$refs.score.showResults(0);
             },
             newGame: function() {
-                this.start.style.display = 'inline';
-                this.resultScreen.style.display = 'none';
+                this.startStyle = 'inline';
+                this.resultScreenStyle = 'none';
+                this.questionNumber = 0;
+                this.questions = [];
+                this.resultArr = [];
+                this.question = '';
+                this.scoreSum = 0;
+                this.totalTime = 0;
+                this.points = 0;
                 this.newGameLock = false;
+                this.quiz.style.backgroundColor = "rgba(0,0,0,0)";
             }
         }
     }
