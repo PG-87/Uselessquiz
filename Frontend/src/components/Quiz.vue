@@ -3,12 +3,12 @@
 
         <Scoreboard id="scoreboard" ref="score" v-bind:style="resultScreen.style"></Scoreboard>
 
-        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}}</p>
+        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} | Snittid: {{ this.totalTime / this.questions.length }}</p>
 
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
-            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }}</li>
+            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }}</li>
         </ul>
 
         <h1 id="question">{{ question }}</h1>
@@ -76,6 +76,7 @@
                 resultArr: [],
                 question: '',
                 scoreSum: 0,
+                totalTime: 0,
                 points: 0
 
             }
@@ -139,7 +140,9 @@
                 let i = id - 1,
                     q = this.question,
                     corrAns = this.questions[this.questionNumber - 1].correct_answer,
-                    yourAns = this.answers[i].answer;
+                    yourAns = this.answers[i].answer,
+                    answerTime = 20 - this.$refs.timer.points;
+                    this.totalTime += answerTime;
                 if (this.answers[i].correct === true) {
                     this.answers[i].style.backgroundColor = '#60BF6B';
                     this.scoreSum += this.$refs.timer.points;
@@ -155,7 +158,7 @@
                     entry.locked = true
                 });
 
-                this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns});
+                this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns, answer_time: answerTime});
 
                 if (this.questionNumber < this.questions.length) {
                     this.next.style.display = 'initial';
@@ -174,7 +177,7 @@
                 fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
             },
             showResult: async function () {
-
+                this.$emit('footerPosition');
                 if(!(this.user==null)) {
                   await this.putResult();
                 }
@@ -187,7 +190,7 @@
                 this.result.style.display = 'none';
                 this.resultScreen.style.display = 'grid';
                 this.quiz.style.backgroundColor = 'white';
-                this.footerPosition.style.position = 'page';
+                // this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
             }
         }
@@ -202,7 +205,7 @@
         display: grid;
         grid-template-rows: minmax(150px, auto) auto auto 1fr;
         background-color: white;
-        margin: auto auto 150px;
+        margin: auto auto 70px;
     }
 
     #question {
