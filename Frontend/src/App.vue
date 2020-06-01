@@ -16,8 +16,9 @@
             </div>
 
             <router-view @authenticated="setAuthenticated" @user="setUser" />
+            <Footer :style="{position: footerPos}"/>
         </div>
-        <Footer :style="{position: footerPos}"/>
+
     </div>
 </template>
 
