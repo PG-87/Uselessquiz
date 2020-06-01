@@ -46,6 +46,9 @@ import Slider from "./components/Slider";
             if(!this.authenticated) {
                 this.$router.replace({ name: "home" });
             }
+            if (window.outerWidth <= 768) {
+                this.footerPos = 'static'
+            }
         },
 
         methods: {
