@@ -7,8 +7,8 @@
 
             <div id="nav">
                 <router-link to="/">Start</router-link>
+                <router-link to="/omoss">Om oss</router-link>
                 <router-link to="/faq">FAQ</router-link>
-                <router-link to="/kontaktaoss">Kontakta oss</router-link>
                 <router-link v-if="!authenticated" to="/login" v-on:click.native="setAuthenticated()" replace>Logga in</router-link>
                 <router-link v-if="authenticated" to="/mypage" replace>Min sida</router-link>
                 <router-link v-if="authenticated" to="/mypage" v-on:click.native="logout()" replace>Logga ut</router-link>
