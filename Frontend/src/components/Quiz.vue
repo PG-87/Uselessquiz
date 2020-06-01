@@ -1,6 +1,6 @@
 <template>
     <div id="quiz" :style="quiz.style">
-
+        <button class="answerButton" v-bind:style="{display: resultScreenStyle}" v-on:click="newGame()">Ny omgång!</button>
         <Scoreboard id="scoreboard" ref="score" v-bind:style="{display: resultScreenStyle}"></Scoreboard>
 
         <p v-bind:style="{display: resultScreenStyle}">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
@@ -10,7 +10,7 @@
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }} s</li>
         </ul>
-        <button class="answerButton" v-bind:style="{display: resultScreenStyle}" v-on:click="newGame()">Ny omgång!</button>
+
 
         <h1 id="question">{{ question }}</h1>
 
@@ -86,7 +86,11 @@
         },
         methods: {
             getQuestion: function (n) {
+
+                if (window.outerWidth <= 768){
                 this.$emit('footerPosition');
+                    console.log(window.outerWidth)
+                }
                 let input;
                 switch (n) {
                     case 10:
@@ -185,10 +189,12 @@
                 if(!(this.user==null)) {
                   await this.putResult();
                 }
+
                 // this.answers.forEach(function (entry) {
                 //     entry.style.display = 'none'
                 // });
                 // this.nextStyle = 'none';
+
                 this.infoStyle = 'none';
                 this.question = '';
                 this.resultStyle = 'none';
@@ -209,6 +215,7 @@
                 this.points = 0;
                 this.newGameLock = false;
                 this.quiz.style.backgroundColor = "rgba(0,0,0,0)";
+                this.$emit('footerPositionStart');
             }
         }
     }
@@ -254,6 +261,7 @@
         width: 320px;
         font-size: 20px;
         color: white;
+        background-color: #3498DB;
     }
 
     .answerButton:hover {

@@ -13,7 +13,7 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
 
-        <Quiz :user="this.$parent.user" :style="quiz.style" @footerPosition="footerPosition"></Quiz>
+        <Quiz :user="this.$parent.user" :style="quiz.style" @footerPosition="footerPosition" @footerPositionStart="footerPositionStart"></Quiz>
 
         <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>
@@ -49,6 +49,9 @@
             },
             footerPosition() {
                 this.$parent.footerPos = 'static';
+            }, footerPositionStart() {
+                this.$parent.footerPos = 'fixed';
+
             }
         },
         mounted() {
