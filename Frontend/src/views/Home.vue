@@ -13,7 +13,7 @@
             <button id="start" @click="togglePage">Starta quiz</button>
         </div>
 
-        <Quiz :user="this.$parent.user" :style="quiz.style" @footerPosition="footerPosition" @footerPositionStart="footerPositionStart"></Quiz>
+        <Quiz :user="this.$parent.user" :style="quiz.style" @footerPosition="footerPosition" @footerPositionStart="footerPositionStart" @showFooter="showFooter()"></Quiz>
 
         <Scoreboard id="scoreboard" ref="scoreboard" :style="home.style"></Scoreboard>
     </div>
@@ -44,20 +44,27 @@
                 this.quiz.style.display = 'grid';
                 if (window.outerWidth <= 768) {
                     console.log('hej');
-                    this.footerPosition()
+                    this.footerPosition();
+                    this.$parent.footerHide = false;
                 }
             },
             footerPosition() {
                 this.$parent.footerPos = 'static';
             }, footerPositionStart() {
                 this.$parent.footerPos = 'fixed';
-
+            },
+            showFooter() {
+                this.$parent.footerHide = true
             }
         },
         mounted() {
-            this.$parent.footerPos = 'fixed';
             this.$refs.scoreboard.showResults(0);
             // this.$parent.footerPosition.style.position = 'fixed';
+            if (window.outerWidth <= 768) {
+                this.$parent.footerPos = 'static';
+            } else {
+                this.$parent.footerPos = 'fixed';
+            }
         }
     }
 </script>

@@ -86,9 +86,9 @@
         },
         methods: {
             getQuestion: function (n) {
-
                 if (window.outerWidth <= 768){
-                this.$emit('footerPosition');
+                    this.$emit('showFooter');
+                    this.$emit('footerPosition');
                     console.log(window.outerWidth)
                 }
                 let input;
@@ -255,6 +255,7 @@
         border-radius: 6px;
         height: 70px;
         margin: auto;
+        align-content: center;
     }
 
     .answerButton {
@@ -353,7 +354,7 @@
     @media screen and (max-width: 768px) {
 
         #quiz {
-            grid-template-rows: minmax(100px, auto) auto auto 50px;
+            grid-template-rows: minmax(100px, auto) auto auto minmax(50px, auto);
             width: auto;
             margin-bottom: 0;
         }

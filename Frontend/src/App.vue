@@ -16,7 +16,7 @@
             </div>
 
             <router-view @authenticated="setAuthenticated" @user="setUser" />
-            <Footer :style="{position: footerPos}"/>
+            <Footer :style="{position: footerPos}" v-show="footerHide"/>
         </div>
 
     </div>
@@ -38,7 +38,8 @@ import Slider from "./components/Slider";
                 authenticated: false,
                 user: null,
                 toggleBlur: false,
-                footerPos: 'fixed'
+                footerPos: 'fixed',
+                footerHide: true
             }
         },
 
