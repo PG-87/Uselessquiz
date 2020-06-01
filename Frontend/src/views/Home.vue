@@ -42,6 +42,10 @@
                 }
                 this.home.style.display = 'none';
                 this.quiz.style.display = 'grid';
+                if (window.outerWidth <= 768) {
+                    console.log('hej');
+                    this.footerPosition()
+                }
             },
             footerPosition() {
                 this.$parent.footerPos = 'static';

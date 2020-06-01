@@ -60,10 +60,10 @@
         data: function () {
             return {
                 answers: [
-                    {id: 1, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
-                    {id: 2, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
-                    {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
-                    {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}}
+                    {id: 1, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB'}},  //, display: 'none'}},
+                    {id: 2, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB'}},  //, display: 'none'}},
+                    {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB'}},  //, display: 'none'}},
+                    {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB'}}  //, display: 'none'}}
                 ],
                 startStyle:  'inline', //lockButton: false,
                 resultScreenStyle: 'none',
@@ -115,9 +115,9 @@
                         this.q = q;
                         this.newGameLock = true;
                         this.startStyle = 'none';
-                        this.answers.forEach(function (entry) {
-                            entry.style.display = 'initial'
-                        });
+                        // this.answers.forEach(function (entry) {
+                        //     entry.style.display = 'initial'
+                        // });
                         this.nextStyle = 'initial';
                         this.infoStyle = 'grid';
                         this.nextQuestion(0);
@@ -189,10 +189,12 @@
                 if(!(this.user==null)) {
                   await this.putResult();
                 }
-              /*  this.answers.forEach(function (entry) {
-                    entry.style.display = 'none'
-                });
-                this.nextStyle = 'none';*/
+
+                // this.answers.forEach(function (entry) {
+                //     entry.style.display = 'none'
+                // });
+                // this.nextStyle = 'none';
+
                 this.infoStyle = 'none';
                 this.question = '';
                 this.resultStyle = 'none';
@@ -225,7 +227,7 @@
         height: auto;
         width: 800px;
         display: grid;
-        grid-template-rows: minmax(150px, auto) auto auto 1fr;
+        grid-template-rows: minmax(150px, auto) auto auto 100px;
         background-color: white;
         margin: auto auto 70px;
     }
@@ -351,8 +353,9 @@
     @media screen and (max-width: 768px) {
 
         #quiz {
-            grid-template-rows: minmax(100px, auto) auto auto 1fr;
+            grid-template-rows: minmax(100px, auto) auto auto 50px;
             width: auto;
+            margin-bottom: 0;
         }
 
         #question {
@@ -375,7 +378,7 @@
 
         section{
             grid-template-columns: 350px;
-            grid-template-rows: auto;
+            grid-template-rows: 50px;
             grid-gap: 7px 0;
             margin: auto;
         }
