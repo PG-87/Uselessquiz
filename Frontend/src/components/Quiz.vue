@@ -1,11 +1,11 @@
 <template>
     <div id="quiz" :style="quiz.style">
 
-        <Scoreboard id="scoreboard" ref="score" v-bind:style="resultScreen.style"></Scoreboard>
+        <Scoreboard id="scoreboard" ref="score" v-bind:style="{display: resultScreenStyle}"></Scoreboard>
 
-        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
+        <p v-bind:style="{display: resultScreenStyle}">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
 
-        <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
+        <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="{display: resultScreenStyle}">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }} s</li>
@@ -14,9 +14,9 @@
 
         <h1 id="question">{{ question }}</h1>
 
-        <timer id="timer" ref="timer" :style="info.style" :points="this.points"/>
+        <timer id="timer" ref="timer" :style="{display: infoStyle}" :points="this.points"/>
 
-        <section v-bind:style="info.style">
+        <section v-bind:style="{display: infoStyle}">
 
             <button class="answerButton" v-for="answer in answers" v-bind:key="answer.id" :style="answer.style"
                     v-on:click="checkAnswer(answer.id)" v-bind:disabled=answer.locked>{{
@@ -27,17 +27,17 @@
             <p id="round">Fråga: {{ questionNumber }}/{{questions.length}}</p>
         </section>
 
-        <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="next.style">Nästa
+        <button id="nextButton" @click="nextQuestion(questionNumber)" style="display: block" v-bind:style="{display: nextStyle}">Nästa
             fråga
         </button>
 
-        <ul id="startButton" :style="start.style">
+        <ul id="startButton" :style="{display: startStyle}">
             <li><button class="start" @click="getQuestion(10)" v-bind:disabled=newGameLock>10 Frågor</button></li>
             <li><button class="start" @click="getQuestion(15)" v-bind:disabled=newGameLock>15 Frågor</button></li>
             <li><button class="start" @click="getQuestion(20)" v-bind:disabled=newGameLock>20 Frågor</button></li>
         </ul>
 
-        <button id="resultButton" @click="showResult()" :style="result.style">Resultat</button>
+        <button id="resultButton" @click="showResult()" :style="{display: resultStyle}">Resultat</button>
 
     </div>
 </template>
@@ -65,12 +65,14 @@
                     {id: 3, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}},
                     {id: 4, answer: '', correct: false, locked: false, style: {backgroundColor: '#3498DB', display: 'none'}}
                 ],
-                start: {lockButton: false, style: {display: 'inline'}},
-                next: {lockButton: false, style: {display: 'none'}},
+                startStyle:  'inline', //lockButton: false,
+                resultScreenStyle: 'none',
+                resultStyle: 'none',
+                nextStyle: 'none', //lockButton: false,
+                infoStyle: 'none',
+
                 quiz: {style: {backgroundColor: 'rgba(0,0,0,0)'}},
-                resultScreen: {style: {display: 'none'}},
-                result: {style: {display: 'none'}},
-                info: {style: {display: 'none'}},
+
                 newGameLock: false,
                 questionNumber: 0,
                 questions: [],
@@ -108,12 +110,12 @@
                         });
                         this.q = q;
                         this.newGameLock = true;
-                        this.start.style.display = 'none';
+                        this.startStyle = 'none';
                         this.answers.forEach(function (entry) {
                             entry.style.display = 'initial'
                         });
-                        this.next.style.display = 'initial';
-                        this.info.style.display = 'grid';
+                        this.nextStyle = 'initial';
+                        this.infoStyle = 'grid';
                         this.nextQuestion(0);
                     })
             },
@@ -123,7 +125,7 @@
                     entry.correct = false;
                     entry.style.backgroundColor = '#3498DB';
                 });
-                this.next.style.display = 'none';
+                this.nextStyle = 'none';
                 this.question = this.questions[i].question;
                 let correctAnswer = this.questions[i].correct_answer;
                 let answerArray = [this.questions[i].correct_answer, this.questions[i].incorrect_answer[0], this.questions[i].incorrect_answer[1], this.questions[i].incorrect_answer[2]];
@@ -163,9 +165,9 @@
                 this.resultArr.push({nr: this.questionNumber, question: q, correct_answer: corrAns, your_answer: yourAns, answer_time: answerTime});
 
                 if (this.questionNumber < this.questions.length) {
-                    this.next.style.display = 'initial';
+                    this.nextStyle = 'initial';
                 } else if (this.questionNumber >= this.questions.length) {
-                    this.result.style.display = 'initial'
+                    this.resultStyle = 'initial'
                 }
 
             },
@@ -186,11 +188,11 @@
                 this.answers.forEach(function (entry) {
                     entry.style.display = 'none'
                 });
-                this.next.style.display = 'none';
-                this.info.style.display = 'none';
+                this.nextStyle = 'none';
+                this.infoStyle = 'none';
                 this.question = '';
-                this.result.style.display = 'none';
-                this.resultScreen.style.display = 'grid';
+                this.resultStyle = 'none';
+                this.resultScreenStyle = 'grid';
                 this.quiz.style.backgroundColor = 'white';
                 // this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
