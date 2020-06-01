@@ -91,7 +91,7 @@
                             break;
                     }
                     if (user === 0) {
-                        fetch('http://127.0.0.1:3000/api/scores/' + input)
+                        fetch('http://uquiz.myddns.me:3000/api/scores/' + input)
                             .then((response) => {
                                 return response.json()
                             })
@@ -121,7 +121,7 @@
                                 })
                             })
                     } else {
-                        fetch('http://127.0.0.1:3000/api/scores/' + input + '/' + user)
+                        fetch('http://uquiz.myddns.me:3000/api/scores/' + input + '/' + user)
                             .then((response) => {
                                 return response.json()
                             })

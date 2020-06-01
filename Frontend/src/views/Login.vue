@@ -48,7 +48,7 @@
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({user: this.input.name, pass: this.input.password})
                     };
-                    const response = await fetch("http://127.0.0.1:3000/api/users/login", requestOptions);
+                    const response = await fetch("http://uquiz.myddns.me:3000/api/users/login", requestOptions);
                     const data = await response.json();
 
                     if (data.length === 0) {

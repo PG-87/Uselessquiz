@@ -3,7 +3,7 @@
 
         <Scoreboard id="scoreboard" ref="score" v-bind:style="resultScreen.style"></Scoreboard>
 
-        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} | Snittid: {{ this.totalTime / this.questions.length }}</p>
+        <p v-bind:style="resultScreen.style">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
 
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
@@ -83,6 +83,7 @@
         },
         methods: {
             getQuestion: function (n) {
+                this.$emit('footerPosition');
                 let input;
                 switch (n) {
                     case 10:
@@ -95,7 +96,7 @@
                         input = '20';
                         break;
                 }
-                fetch('http://127.0.0.1:3000/api/questions/range/' + input)
+                fetch('http://uquiz.myddns.me:3000/api/questions/range/' + input)
                     .then((response) => {
                         return response.json()
                     })
@@ -174,7 +175,7 @@
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
                 };
-                fetch("http://127.0.0.1:3000/api/addscore", requestOptions);
+                fetch("http://uquiz.myddns.me:3000/api/addscore", requestOptions);
             },
             showResult: async function () {
                 this.$emit('footerPosition');
