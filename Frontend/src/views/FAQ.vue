@@ -1,12 +1,10 @@
 <template>
     <div>
         <ul id="questions" v-for="question in questions" v-bind:key="question.id">
-            <li @click="showAnswer(question.id)" style="font-weight: bolder">{{question.Question}}</li>
+            <li @click="showAnswer(question.id)" style="font-weight: bolder">{{question.Question}} + </li>
             <li v-show="question.isSelected">{{question.Answer}}</li>
 
-           
         </ul>
-
     </div>
 </template>
 
