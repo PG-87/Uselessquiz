@@ -3,7 +3,7 @@
         <Slider id="slider" ref="slide"/>
 
         <div id="wrapper" :class="{'blur-content': this.toggleBlur}">
-            <img class=logo alt="vue logo" src="./assets/logo.png">
+            <router-link to="/"><img class=logo alt="vue logo" src="./assets/logo.png"></router-link>
 
             <div id="nav">
                 <router-link to="/">Start</router-link>

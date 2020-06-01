@@ -8,8 +8,9 @@
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="resultScreen.style">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
-            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }}</li>
+            <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }} s</li>
         </ul>
+        <button class="answerButton" v-bind:style="resultScreen.style" v-on:click="newGame()">Ny omgång!</button>
 
         <h1 id="question">{{ question }}</h1>
 
@@ -193,6 +194,11 @@
                 this.quiz.style.backgroundColor = 'white';
                 // this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
+            },
+            newGame: function() {
+                this.start.style.display = 'inline';
+                this.resultScreen.style.display = 'none';
+                this.newGameLock = false;
             }
         }
     }
