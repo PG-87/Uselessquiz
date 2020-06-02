@@ -31,32 +31,15 @@
 </script>
 
 <style scoped>
+
  .aboutUs {
+
      color: fuchsia;
  }
 h3{
 color: purple;
 }
- .heart {
-     z-index : 999;
-     position : absolute;
- }
- .heart:before,
- .heart:after {
-     content : "";
-     background-color : #fc2a62;
-     position : absolute;
-     height : 30px;
-     width : 45px;
-     border-radius : 15px 0px 0px 15px;
- }
- .heart:before {
-     transform : rotate(45deg);
- }
- .heart:after {
-     left : 10.5px;
-     transform : rotate(135deg);
- }
+
 
  @keyframes heartfade {
      0% {

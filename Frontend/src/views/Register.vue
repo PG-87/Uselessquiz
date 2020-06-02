@@ -50,7 +50,7 @@
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({user: this.RegName, pass: this.RegPassword, email: this.RegEmail})
                 };
-                const response = await fetch("http://uquiz.myddns.me:3000/api/new_user", requestOptions);
+                const response = await fetch("http://uselessquiz.se:3000/api/new_user", requestOptions);
                 const data = await response.json();
                     if (data.Message==="User already exists") {
                         alert("Denna email finns redan!!");
