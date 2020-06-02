@@ -31,7 +31,7 @@
                     {
                         id: 3,
                         Question: "Går det att fuska så jag vinner hela tiden?",
-                        Answer: "Använd hjälplinan, "ring en vän".",
+                        Answer: 'Använd hjälplinan, "ring en vän".',
                         isSelected: false,
                     }
                 ]
