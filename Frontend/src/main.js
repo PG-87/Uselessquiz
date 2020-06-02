@@ -58,7 +58,7 @@ const router = new Router ({
             path: "/aboutus",
             name: "aboutus",
             component: () =>
-                import( "./views/AboutUs.vue")
+                import( "./views/OmOss.vue")
         },
         {
             path: "/faq",
