@@ -103,7 +103,7 @@
                         input = '20';
                         break;
                 }
-                fetch('http://uquiz.myddns.me:3000/api/questions/range/' + input)
+                fetch('http://uselessquiz.se:3000/api/questions/range/' + input)
                     .then((response) => {
                         return response.json()
                     })
@@ -181,7 +181,7 @@
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
                 };
-                fetch("http://uquiz.myddns.me:3000/api/addscore", requestOptions);
+                fetch("http://uselessquiz.se:3000/api/addscore", requestOptions);
             },
             showResult: async function () {
                 this.$emit('footerPosition');
