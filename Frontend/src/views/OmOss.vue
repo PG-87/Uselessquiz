@@ -1,6 +1,6 @@
 <template>
 
-        <div class="omOss" >
+        <div class="aboutUs" >
          <div  class = "heart" >
         </div>
 
@@ -31,11 +31,27 @@
 </script>
 
 <style scoped>
- .omOss {
+
+ .aboutUs {
+
      color: fuchsia;
  }
 h3{
 color: purple;
 }
 
+
+ @keyframes heartfade {
+     0% {
+         opacity : 1;
+     }
+     50% {
+         opacity : 0;
+     }
+ }
+ .heart {
+     z-index : 999;
+     animation : heartfade 6s linear;
+     position : absolute;
+ }
 </style>

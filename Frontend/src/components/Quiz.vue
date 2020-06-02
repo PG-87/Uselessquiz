@@ -3,14 +3,14 @@
         <button class="answerButton" v-bind:style="{display: resultScreenStyle}" v-on:click="newGame()">Ny omgång!</button>
         <Scoreboard id="scoreboard" ref="score" v-bind:style="{display: resultScreenStyle}"></Scoreboard>
 
-        <p v-bind:style="{display: resultScreenStyle}">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
+        <p v-bind:style="{display: resultScreenStyle}" v-if="this.windowWidth > 768">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
+        <p v-bind:style="{display: resultScreenStyle}" v-else>Score: {{ scoreSum }}/{{questions.length * 20}} Totaltid: {{ this.totalTime }} s Snittid: {{ this.totalTime / this.questions.length }} s</p>
 
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="{display: resultScreenStyle}">
             <li><hr></li>
             <li>Fråga {{r.nr}}: {{ r.question }}</li>
             <li>Korrekt svar:  {{ r.correct_answer }} | Ditt svar:  {{ r.your_answer }} | Tid: {{ r.answer_time }} s</li>
         </ul>
-
 
         <h1 id="question">{{ question }}</h1>
 
@@ -80,9 +80,12 @@
                 question: '',
                 scoreSum: 0,
                 totalTime: 0,
-                points: 0
-
+                points: 0,
+                windowWidth: 0
             }
+        },
+        watch() {
+            this.windowWidth = window.outerWidth
         },
         methods: {
             getQuestion(n) {
@@ -279,7 +282,7 @@
 
     .start {
         width: 150px;
-        background-color: darkslateblue;
+        background-color: #3498DB;
         color: antiquewhite;
         font-weight: bolder;
         font-family: Arial, sans-serif;
@@ -358,6 +361,11 @@
             margin-bottom: 0;
         }
 
+        #quiz p {
+            width: 40%;
+            justify-self: center;
+        }
+
         #question {
             font-size: 20px;
             word-break: break-word;
@@ -408,6 +416,7 @@
         #result {
             width: 90%;
             justify-self: center;
+            margin-bottom: 0;
         }
         #result li {
             font-size: 15px;
