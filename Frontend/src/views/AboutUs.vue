@@ -1,6 +1,6 @@
 <template>
 
-        <div class="omOss" >
+        <div class="aboutUs" >
          <div  class = "heart" >
         </div>
 
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped>
- .omOss {
+ .aboutUs {
      color: fuchsia;
  }
 h3{
