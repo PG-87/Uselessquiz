@@ -36,7 +36,7 @@
         },
         props: {},
         methods: {
-            togglePage: function () {
+            togglePage () {
                 if (this.$parent.user == null) {
                     alert("Observera att ditt resultat inte sparas\n om du inte är inloggad!!")
                 }
