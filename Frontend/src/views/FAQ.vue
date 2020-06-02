@@ -18,20 +18,20 @@
                 questions: [
                     {
                         id: 1,
-                        Question: "Hur länge kommer mitt registration att vara aktiv?",
-                        Answer: "Ett registration på U-Quiz varar ett år.",
+                        Question: "Hur länge kommer mitt användarkonto att vara aktivt?",
+                        Answer: "En registrering gäller livet ut, grattis!",
                         isSelected: false,
                     },
                     {
                         id: 2,
-                        Question: "Vad ska jag göra om jag glömmer min lösenord?",
-                        Answer: "Glöm inte! We have no solution for this.",
+                        Question: "Vad ska jag göra om jag glömmer mitt lösenord?",
+                        Answer: "Glöm inte! Detta är inte implementerat än!.",
                         isSelected: false,
                     },
                     {
                         id: 3,
-                        Question: "Hur kan jag vinna hela tiden?",
-                        Answer: "Right click on the page, go to inspect button, you will see the file for questions and right answers.",
+                        Question: "Går det att fuska så jag vinner hela tiden?",
+                        Answer: "Använd hjälplinan, "ring en vän".",
                         isSelected: false,
                     }
                 ]
