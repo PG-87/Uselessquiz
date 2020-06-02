@@ -75,7 +75,7 @@
             }
         },
         methods: {
-            showResults: function (id) {
+            showResults(id) {
                 let user = id;
                 for (let i = 0; i < 3; i++) {
                     let input;
@@ -185,7 +185,7 @@
     table th {
         padding: 5px;
         text-align: center;
-        background-color: darkslateblue;
+        background-color: #2c3e50;
         color: white;
         height: 8px;
     }
@@ -210,6 +210,7 @@
             grid-template-columns: 250px;
             margin: auto;
             grid-row-gap: 10px;
+            justify-content: center;
         }
     }
 
