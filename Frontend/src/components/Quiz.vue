@@ -85,7 +85,7 @@
             }
         },
         methods: {
-            getQuestion: function (n) {
+            getQuestion(n) {
                 if (window.outerWidth <= 768){
                     this.$emit('showFooter');
                     this.$emit('footerPosition');
@@ -123,7 +123,7 @@
                         this.nextQuestion(0);
                     })
             },
-            nextQuestion: function (i) {
+            nextQuestion(i) {
                 this.answers.forEach(function (entry) {
                     entry.locked = false;
                     entry.correct = false;
@@ -143,7 +143,7 @@
                 this.questionNumber += 1;
                 this.$refs.timer.startTimer();
             },
-            checkAnswer: function (id) {
+            checkAnswer(id) {
                 this.$refs.timer.stopTimer();
                 let i = id - 1,
                     q = this.question,
@@ -173,9 +173,8 @@
                 } else if (this.questionNumber >= this.questions.length) {
                     this.resultStyle = 'initial'
                 }
-
             },
-            putResult: function(){
+            putResult(){
                 const requestOptions = {
                     method: "PUT",
                     mode: 'cors',
@@ -203,7 +202,7 @@
                 // this.footerPosition.style.position = 'page';
                await this.$refs.score.showResults(0);
             },
-            newGame: function() {
+            newGame() {
                 this.startStyle = 'inline';
                 this.resultScreenStyle = 'none';
                 this.questionNumber = 0;
