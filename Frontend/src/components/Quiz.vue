@@ -81,8 +81,8 @@
                 scoreSum: 0,
                 totalTime: 0,
                 points: 0,
-                windowWidth: 0
-            }
+                windowWidth: 0,
+             }
         },
         watch() {
             this.windowWidth = window.outerWidth
@@ -177,33 +177,34 @@
                     this.resultStyle = 'initial'
                 }
             },
-            putResult(){
+            putResult:async function(){
                 const requestOptions = {
                     method: "PUT",
                     mode: 'cors',
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({userId:this.user.userId,score:this.scoreSum,questionAmount:this.questions.length})
                 };
-                fetch("http://uselessquiz.se:3000/api/addscore", requestOptions);
+                const response= await fetch("http://uselessquiz.se:3000/api/addscore", requestOptions)
+                return await response.json()
             },
             showResult: async function () {
                 this.$emit('footerPosition');
-                if(!(this.user==null)) {
-                  await this.putResult();
-                }
-
-                // this.answers.forEach(function (entry) {
-                //     entry.style.display = 'none'
-                // });
-                // this.nextStyle = 'none';
-
                 this.infoStyle = 'none';
                 this.question = '';
                 this.resultStyle = 'none';
                 this.resultScreenStyle = 'grid';
                 this.quiz.style.backgroundColor = 'white';
-                // this.footerPosition.style.position = 'page';
-               await this.$refs.score.showResults(0);
+                if(!(this.user==null)) {
+                    await this.putResult()
+                        .then((data) => {
+                            if(data.Message === 'ok'){
+                                this.$refs.score.showResults(0);
+                            }
+                        })
+                }else{
+                    this.$refs.score.showResults(0);
+                }
+
             },
             newGame() {
                 this.startStyle = 'inline';
