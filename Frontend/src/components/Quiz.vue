@@ -3,8 +3,8 @@
         <button class="answerButton" v-bind:style="{display: resultScreenStyle}" v-on:click="newGame()">Ny omgång!</button>
         <Scoreboard id="scoreboard" ref="score" v-bind:style="{display: resultScreenStyle}"></Scoreboard>
 
-        <p v-bind:style="{display: resultScreenStyle}" v-if="this.windowWidth > 768">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ this.totalTime / this.questions.length }} s</p>
-        <p v-bind:style="{display: resultScreenStyle}" v-else>Score: {{ scoreSum }}/{{questions.length * 20}} Totaltid: {{ this.totalTime }} s Snittid: {{ this.totalTime / this.questions.length }} s</p>
+        <p v-bind:style="{display: resultScreenStyle}" v-if="this.windowWidth > 768">Score: {{ scoreSum }}/{{questions.length * 20}} | Totaltid: {{ this.totalTime }} s | Snittid: {{ (this.totalTime / this.questions.length).toFixed(2) }} s</p>
+        <p v-bind:style="{display: resultScreenStyle}" v-else>Score: {{ scoreSum }}/{{questions.length * 20}} Totaltid: {{ this.totalTime }} s Snittid: {{ (this.totalTime / this.questions.length).toFixed(2) }} s</p>
 
         <ul id="result" v-for="r in resultArr" v-bind:key="r.question" v-bind:style="{display: resultScreenStyle}">
             <li><hr></li>
