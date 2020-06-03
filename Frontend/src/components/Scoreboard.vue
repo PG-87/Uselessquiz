@@ -179,7 +179,6 @@
 
     table td, th {
         padding: 3px;
-        width: 100px;
     }
 
     table th {
