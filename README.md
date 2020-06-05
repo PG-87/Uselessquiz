@@ -54,3 +54,6 @@ Där vi kommer ha ett stort utbud av frågor så du inte ska få samma frågor f
 * [Christoffer Clausen](https://github.com/ChristofferClausen)
 * [Nicklas Johansson](https://github.com/NJKongelf)
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
