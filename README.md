@@ -4,7 +4,13 @@ Ett projektarbete på IT-Högskolan i Göteborg
 Klass Java 19
 Projektarbete Agil Utveckling - Quiz
 
-Byggs i HTML/CSS, Node.js, Vue/Cli
+## Byggt med
+* [Webstorm](https://www.jetbrains.com/webstorm/) - Jetbrains Javascript IDE
+* [HTML/CSS](https://www.w3schools.com/html/html_css.asp) - Styling webapplication
+* [Vue/Cli](https://cli.vuejs.org/) -  js framework för frontend
+* [Node.js](https://nodejs.org/en/) - js framework för backend
+* [npm](https://www.npmjs.com/) -  Package manager för dependencies
+* [Docker](https://docs.docker.com/) - Deployment via en Raspberry PI
 
 ## Tema - Onödiga fakta Quiz
 
@@ -29,4 +35,10 @@ Som vill lära sig något nytt, utmana vänner eller bara fördriva tiden.
 I motsats till “kwiss.me” där användarna skapar frågorna och användarna alltid får samma frågor ställda (t.ex svårt att göra en tävling runt).
 Där vi kommer ha ett stort utbud av frågor så du inte ska få samma frågor flera gånger, därav blir det en mer rättvis highscore.*
 
+## Utvecklad av:
+
+* [Patrik Gustafsson](https://github.com/PG-87)
+* [Tugba Arslan](https://github.com/bentgb)
+* [Christoffer Clausen](https://github.com/ChristofferClausen)
+* [Nicklas Johansson](https://github.com/NJKongelf)
 
