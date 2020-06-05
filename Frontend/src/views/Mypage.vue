@@ -19,15 +19,18 @@
         components: {
             Scoreboard
         },
-       mounted(){
+        mounted() {
             this.$refs.scoreboard.showResults(this.$parent.user.userId);
-            this.$parent.footerPos = 'fixed';
-       }
+            if (window.outerWidth <= 768) {
+                this.$parent.footerHide = false;
+            } else {
+                this.$parent.footerPos = 'fixed';
+            }
+        }
     }
 </script>
 
 <style scoped>
-
 
 
     #secure {

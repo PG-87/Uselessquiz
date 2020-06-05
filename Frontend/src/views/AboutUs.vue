@@ -5,14 +5,14 @@
         </div>
 
         <h3>Vem är vi?</h3>
-        <p>Vi är en grupp av fyra programmeringsstudenter, Christopher, Nicklas, Partick, Tugba, <br>
-            som ville testa sina gränser för en vanlig läxa.</p>
-        <p >Vi hade det väldigt roligt när vi skapade vi Useless Quiz som en del av vår uppgift.</p>
-        <h3>Mission</h3>
-        <p>Vi skapade Useless-Quiz för dig som tröttnade på karantän, studier, arbete eller liv.</p>
-        <p> Vi vill att alla har det roligt med livet! <br>
+        <p>Vi är en grupp på fyra programmeringsstudenter, Christoffer, Nicklas, Partik, Tugba, <br>
+            som ville utveckla sina kunskaper i HTML/CSS, node.js och Vue/Cli för ett projekt arbete.</p>
+        <p >Vi hade det väldigt roligt när vi skapade UselessQuiz som en del av vår uppgift.</p>
+        <h3>Målgrupp</h3>
+        <p>Vi skapade UselessQuiz för dig som sitter i karantän, pluggar, lunchar på jobbet eller har allmänt tråkigt.</p>
+        <p> Vi vill att alla ska ha ett roligt liv! <br>
         <h3>Vision</h3>
-        <p>Alla ska vara vinnare av "Vem vet mest!</p>
+        <p>Alla ska vara vinnare av "Vem vet mest!" eller briljera på förfesten!</p>
 
 
         </div>
