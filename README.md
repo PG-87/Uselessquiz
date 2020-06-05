@@ -56,4 +56,4 @@ Där vi kommer ha ett stort utbud av frågor så du inte ska få samma frågor f
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is under no license, feel free to use. Dont know about the dog photo though...
