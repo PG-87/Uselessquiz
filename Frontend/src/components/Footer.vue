@@ -86,17 +86,14 @@
 
     .social-icons a.discord:hover {
         background-color: #7289da;
-        /*background-color: darkorange;*/
     }
 
     .social-icons a.twitter:hover {
         background-color: #1cb7eb;
-        /*background-color: #00aced*/
     }
 
     .social-icons a.github:hover {
         background-color: black;
-        /*background-color: #ea4c89*/
     }
 
     @media (max-width: 767px) {
