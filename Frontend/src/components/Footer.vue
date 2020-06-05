@@ -8,9 +8,9 @@
 
         <div class="socialMedia">
             <ul class="social-icons">
-                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a class="github" href="#"><i class="fab fa-github"></i></a></li>
-                <li><a class="discord" href="#"><i class="fab fa-discord"></i></a></li>
+                <li><a class="twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                <li><a class="github" href="https://github.com/PG-87/agilquiz"><i class="fab fa-github"></i></a></li>
+                <li><a class="discord" href="https://discord.com"><i class="fab fa-discord"></i></a></li>
             </ul>
         </div>
 
@@ -68,7 +68,8 @@
 
     .social-icons a {
         background-color: #eceeef;
-        color: #818a91;
+        /*color: #818a91;*/
+        color: #FFFFFF;
         font-size: 16px;
         display: inline-block;
         line-height: 34px;
@@ -84,15 +85,15 @@
 
 
     .social-icons a.discord:hover {
-        background-color: darkorange;
+        background-color: #7289da;
     }
 
     .social-icons a.twitter:hover {
-        background-color: #00aced
+        background-color: #1cb7eb;
     }
 
     .social-icons a.github:hover {
-        background-color: #ea4c89
+        background-color: black;
     }
 
     @media (max-width: 767px) {
