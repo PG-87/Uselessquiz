@@ -211,6 +211,15 @@
             grid-row-gap: 10px;
             justify-content: center;
         }
+
+        table {
+            justify-self: center;
+        }
+
+        table td, th {
+            min-width: 100px;
+            width: auto;
+        }
     }
 
 </style>
