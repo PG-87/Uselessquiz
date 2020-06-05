@@ -6,6 +6,15 @@ Klass Java 19
 
 Projektarbete Agil Utveckling - Quiz
 
+## Mål och syfte
+
+*I projektarbetet i grupp utvecklar ni en webbapplikation i form av ett Quiz (där målet kan t ex vara
+inlärning inom något område) där ni gör en förstudie och planering för att därefter genomföra ett
+projekt med agila metoder där vi utgår från Scrum. Webbapplikationen görs med HTML, CSS,
+Javascript, vue och en backend i node.js med SQLite som databas. Webbapplikationen är ett Quiz där
+ni själva ska tänka ut en målgrupp och anpassa så att det blir intressant att använda den samt
+prioritera funktionalitet och göra design utifrån det.*
+
 ## Byggt med
 * [Webstorm](https://www.jetbrains.com/webstorm/) - Jetbrains Javascript IDE
 * [HTML/CSS](https://www.w3schools.com/html/html_css.asp) - Styling webapplication
@@ -13,6 +22,7 @@ Projektarbete Agil Utveckling - Quiz
 * [Node.js](https://nodejs.org/en/) - js framework för backend
 * [npm](https://www.npmjs.com/) -  Package manager för dependencies
 * [Docker](https://docs.docker.com/) - Deployment via en Raspberry PI
+* [SQLite](https://www.sqlite.org/index.html) - Databas med användarkonton och scoreboard
 
 ## Tema - Onödiga fakta Quiz
 
