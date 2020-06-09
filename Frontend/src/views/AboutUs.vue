@@ -5,7 +5,7 @@
         </div>
 
         <h3>Vem är vi?</h3>
-        <p>Vi är en grupp på fyra programmeringsstudenter, Christoffer, Nicklas, Partik, Tugba, <br>
+        <p>Vi är en grupp på fyra programmeringsstudenter, Christoffer, Nicklas, Patrik, Tugba, <br>
             som ville utveckla sina kunskaper i HTML/CSS, node.js och Vue/Cli för ett projekt arbete.</p>
         <p >Vi hade det väldigt roligt när vi skapade UselessQuiz som en del av vår uppgift.</p>
         <h3>Målgrupp</h3>
